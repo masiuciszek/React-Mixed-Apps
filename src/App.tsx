@@ -1,8 +1,11 @@
 /* eslint-disable import/extensions */
 import React from 'react';
+import { Route, Switch } from 'react-router-dom';
 import Layout from './components/layout/Layout';
-import PokemonsList from './components/pokemons/PokemonsList';
 
+import PokemonPage from './pages/Pokemon';
+import HomePage from './pages/HomePage';
+import StarWarsPage from './pages/Starwars';
 
 interface P {
 
@@ -11,7 +14,12 @@ interface P {
 const App: React.FC<P> = () => (
   <>
     <Layout>
-      <PokemonsList />
+      <Switch>
+        <Route path="/" component={HomePage} />
+        <Route path="/pokemons" component={PokemonPage} />
+        <Route path="/star-wars" component={StarWarsPage} />
+      </Switch>
+
     </Layout>
   </>
 );
