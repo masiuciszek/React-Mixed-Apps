@@ -15,7 +15,6 @@ const PokeItem: React.FC<P> = ({ pokeData }) => {
         {' '}
         {name}
       </h3>
-
       {' '}
     </>
   );
