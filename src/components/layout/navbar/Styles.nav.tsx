@@ -14,10 +14,10 @@ padding: .3em;
   h4{
     font-size: 2em;
     letter-spacing: .1rem;
-    border-bottom: 2px solid ${(props) => props.theme.colors.common};
+    border-bottom: 2px solid ${(props) => props.theme.colors.danger};
     width: 12rem;
     span {
-      color: ${({ theme }) => theme.colors.common};
+      color: ${({ theme }) => theme.colors.danger};
     }
   }
 
@@ -38,7 +38,7 @@ export const StyledNavList = styled.ul`
       transition: ${({ theme }) => theme.transition.mainTransition};
       position: relative;
       &:hover{
-        color: ${({ theme }) => theme.colors.common};
+        color: ${({ theme }) => theme.colors.danger};
         &::after{
           content: '';
           width: 100%;

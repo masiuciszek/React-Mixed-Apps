@@ -4,12 +4,12 @@ import { composeWithDevTools } from 'redux-devtools-extension';
 // import createSagaMiddleware from 'redux-saga';
 // import rootSaga from './root.saga';
 import thunk from 'redux-thunk';
-import pokemonReducer from './pokemon/pokemon.reducer';
+
 
 const logger = createLogger();
 
 const rootReducer = combineReducers({
-  pokemons: pokemonReducer,
+  starWars: () => 'star wars',
   apa: () => 'apa',
 });
 

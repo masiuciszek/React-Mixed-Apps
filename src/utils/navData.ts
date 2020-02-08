@@ -24,28 +24,38 @@ export const navData: INavData[] = [
   },
   {
     id: uuid(),
-    text: 'pokemons',
-    path: '/pokemon',
+    text: 'blackjack',
+    path: '/blackjack',
+  },
+  {
+    id: uuid(),
+    text: 'mime-app',
+    path: '/mime-app',
   },
   {
     id: uuid(),
     text: 'star-wars',
     path: '/starwars',
   },
+  {
+    id: uuid(),
+    text: 'contact',
+    path: '/contact',
+  },
 ];
 export const HomeData: IHomeData[] = [
   {
     id: uuid(),
-    title: 'home',
-    text: 'Home page where it all starts',
-    path: '/',
+    title: 'black jack',
+    text: 'black jack API , really cool check it out',
+    path: '/black-jack',
     backgroundUrl: 'https://s3-us-west-2.amazonaws.com/s.cdpn.io/769286/lake-macquarie-71208_1920.jpg',
   },
   {
     id: uuid(),
-    title: 'pokemons',
-    path: '/pokemon',
-    text: 'pokemons api is used here and it\'s cool , I like it',
+    title: 'mime Api',
+    path: '/mime-app',
+    text: 'funny and really cool meme api',
     backgroundUrl: 'https://images.unsplash.com/photo-1480796927426-f609979314bd?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1350&q=80',
   },
   {
@@ -54,5 +64,12 @@ export const HomeData: IHomeData[] = [
     text: 'Who doesn\'t love Star wars, it\'s the best',
     path: '/starwars',
     backgroundUrl: 'https://images.unsplash.com/photo-1537420327992-d6e192287183?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=634&q=80',
+  },
+  {
+    id: uuid(),
+    title: 'contact',
+    text: 'contact me and know who I am',
+    path: '/contact',
+    backgroundUrl: 'https://images.unsplash.com/photo-1528360983277-13d401cdc186?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1350&q=80',
   },
 ];

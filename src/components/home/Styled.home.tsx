@@ -1,5 +1,6 @@
 /* eslint-disable @typescript-eslint/interface-name-prefix */
 import styled from 'styled-components';
+import { flexRotate } from '../styled/animations';
 
 interface IStyledHome {
   backgroundUrl: string;
@@ -28,7 +29,7 @@ export const StyledHomeBox = styled.div<IStyledHome>`
   justify-content: center;
   align-items:center;
   height: 100%;
-
+  position: relative;
   @media screen and (max-width: 768px) {
     overflow: auto;
     overflow-x: hidden;
@@ -45,22 +46,74 @@ export const StyledHomeBox = styled.div<IStyledHome>`
    background-size: cover;
     background-position: center center;
     background-attachment: fixed;
+
+    &::after{
+      content: '';
+      position: absolute;
+      background: ${({ theme }) => theme.colors.darkRGBA};
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+    }
 `;
 
 export const FlexWrapper = styled.div`
   height: 100%;
   display: flex;
-  align-items:center;
-  flex-direction:column;
-  justify-content:center;
+  align-items: center;
+  flex-direction: column;
+  justify-content: center;
+  /* transform: rotate(90deg); */
+  z-index: 2;
+  position: relative;
+  &:hover{
+
+    @media(min-width:768px){
+      h4{
+        color: ${({ theme }) => theme.colors.danger};
+        transform: rotate(-90deg);
+        display: block;
+      }
+  }
+
+    p,
+    span,
+    a
+    {
+      display: block;
+
+    }
+  }
+
 `;
 
 
 export const FlexTitle = styled.div`
   font-size: 2.2rem;
   color: ${({ theme }) => theme.colors.white};
+  h4{
+    text-transform: uppercase;
+  }
+
+  @media(min-width:768px){
+    transform: rotate(90deg);
+  }
 `;
 
 export const FlexText = styled.div`
   color: ${({ theme }) => theme.colors.white};
+  p,
+  span,
+  a
+  {
+    display: none;
+    font-size: 1.4rem;
+  }
+  span {
+    text-align: center;
+    a{
+      color: ${({ theme }) => theme.colors.white};
+    }
+  }
 `;

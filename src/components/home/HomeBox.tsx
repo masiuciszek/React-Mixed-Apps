@@ -1,5 +1,7 @@
 import * as React from 'react';
+import { Link } from 'react-router-dom';
 import { IHomeData } from '../../utils/navData';
+import { StyledLink } from '../styled/Buttons';
 import {
   FlexTitle, FlexText, StyledHomeBox, FlexWrapper,
 } from './Styled.home';
@@ -22,6 +24,7 @@ const HomeBox: React.FC<P> = ({ homeData }) => {
           </FlexTitle>
           <FlexText>
             <p>{text}</p>
+            <StyledLink><Link to={path}>{title}</Link></StyledLink>
           </FlexText>
         </FlexWrapper>
       </StyledHomeBox>
