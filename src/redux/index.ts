@@ -1,15 +1,15 @@
+/* eslint-disable import/extensions */
 import { createStore, applyMiddleware, combineReducers } from 'redux';
 import { createLogger } from 'redux-logger';
 import { composeWithDevTools } from 'redux-devtools-extension';
-// import createSagaMiddleware from 'redux-saga';
-// import rootSaga from './root.saga';
 import thunk from 'redux-thunk';
+import starWarsReducer from './starwars/sw.reducer';
 
 
 const logger = createLogger();
 
 const rootReducer = combineReducers({
-  starWars: () => 'star wars',
+  starWars: starWarsReducer,
   apa: () => 'apa',
 });
 
