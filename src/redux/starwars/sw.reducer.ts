@@ -10,7 +10,6 @@ const initialState: ISwState = {
 export default (state: ISwState = initialState, action: SwActionTypes) => {
   switch (action.type) {
     case ActionTypesStarWars.GET_PERSON:
-
       return {
         ...state,
         person: action.payload,
