@@ -6,6 +6,7 @@ import Layout from './components/layout/Layout';
 
 import HomePage from './pages/HomePage';
 import StarWarsPage from './pages/Starwars';
+import CardsPage from './pages/Cards';
 
 interface P {
 
@@ -15,9 +16,9 @@ const App: React.FC<P> = () => (
   <>
     <Layout>
       <Switch>
-        <Route path="/" component={HomePage} />
-
-        <Route path="/star-wars" component={StarWarsPage} />
+        <Route exact path="/" component={HomePage} />
+        <Route exact path="/cards" component={CardsPage} />
+        <Route exact path="/star-wars" component={StarWarsPage} />
       </Switch>
 
     </Layout>

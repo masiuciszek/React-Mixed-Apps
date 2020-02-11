@@ -24,17 +24,17 @@ export const navData: INavData[] = [
   },
   {
     id: uuid(),
-    text: 'blackjack',
-    path: '/blackjack',
+    text: 'cards',
+    path: '/cards',
   },
   {
     id: uuid(),
-    text: 'mime-app',
-    path: '/mime-app',
+    text: 'jokesApp',
+    path: '/jokes',
   },
   {
     id: uuid(),
-    text: 'star-wars',
+    text: 'starWars',
     path: '/starwars',
   },
   {
@@ -46,15 +46,15 @@ export const navData: INavData[] = [
 export const HomeData: IHomeData[] = [
   {
     id: uuid(),
-    title: 'black jack',
-    text: 'black jack API , really cool check it out',
-    path: '/black-jack',
+    title: 'cards App',
+    text: 'cards API , really cool check it out',
+    path: '/cards',
     backgroundUrl: 'https://s3-us-west-2.amazonaws.com/s.cdpn.io/769286/lake-macquarie-71208_1920.jpg',
   },
   {
     id: uuid(),
-    title: 'mime Api',
-    path: '/mime-app',
+    title: 'jokes',
+    path: '/jokes',
     text: 'funny and really cool meme api',
     backgroundUrl: 'https://images.unsplash.com/photo-1480796927426-f609979314bd?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1350&q=80',
   },
