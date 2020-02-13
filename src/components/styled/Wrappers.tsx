@@ -1,5 +1,14 @@
+/* eslint-disable @typescript-eslint/interface-name-prefix */
 import styled from 'styled-components';
 
+interface IBgWrapper {
+  bg?: string;
+}
+
+export const BgWrapper = styled.div<IBgWrapper>`
+  min-height: 95vh;
+  background: ${({ theme, bg }) => (bg || theme.colors.offWhite)};
+`;
 
 export const PageWrapper = styled.div`
   width: 100%;

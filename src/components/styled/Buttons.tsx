@@ -1,5 +1,9 @@
+/* eslint-disable @typescript-eslint/interface-name-prefix */
 import styled from 'styled-components';
 
+interface IBtn {
+  font?: boolean;
+}
 
 export const StyledLink = styled.span`
   color: ${({ theme }) => theme.colors.white};
@@ -19,6 +23,12 @@ export const StyledLink = styled.span`
   }
 `;
 
-export const StyledBtn = styled(StyledLink)`
 
+export const StyledBtn = styled(StyledLink)<IBtn>`
+  cursor: pointer;
+  color: ${({ theme }) => theme.colors.primary};
+  font-size: 1.7rem;
+  width: 15rem;
+  background: ${({ theme }) => theme.colors.green};
+  font-family: ${({ theme, font }) => font && "'Faster One'"}
 `;

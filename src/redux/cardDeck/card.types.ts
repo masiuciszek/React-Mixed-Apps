@@ -1,33 +1,36 @@
 /* eslint-disable @typescript-eslint/interface-name-prefix */
 export interface IDeck{
-  deck_id: string;
   remaining: number;
+  deck_id: string;
   shuffled: boolean;
   success: boolean;
 }
-
 export interface ICard {
-  id: string;
-  image: string;
   suit: string;
   value: string;
+  code: string;
+  images: {
+    svg: string;
+    png: string;
+  };
 }
 
 export interface ICardState {
   deck: IDeck | null;
-  cards: ICard[] | null;
+  cards: ICard[];
   loading: boolean;
+  error: null;
 }
 
 
 export enum ActionTypesCards {
-  FETCH_CARD = 'FETCH_CARD',
+  FETCH_DECK = 'FETCH_DECK',
   GET_CARD = 'GET_CARD',
   FETCH_CARD_FAILED = 'FETCH_CARD_FAILED',
 }
 
-export interface FetchCardAction {
-  type: ActionTypesCards.FETCH_CARD;
+export interface FetchDeckAction {
+  type: ActionTypesCards.FETCH_DECK;
   payload: IDeck;
 }
 
@@ -42,4 +45,4 @@ export interface FetchCardFailed {
   payload: Record<string, any>;
 }
 
-export type CardActionTypes = FetchCardAction | GetCardAction
+export type CardActionTypes = FetchDeckAction | GetCardAction | FetchCardFailed

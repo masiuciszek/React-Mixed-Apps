@@ -4,6 +4,7 @@ export default createGlobalStyle`
 /* @import url('https://fonts.googleapis.com/css?family=Nunito:300,300i,400,400i,600,600i,700,700i&display=swap'); */
 @import url('https://fonts.googleapis.com/css?family=Bowlby+One+SC|Nunito:300,300i,400,400i,600,600i,700,700i&display=swap');
 @import url('https://fonts.googleapis.com/css?family=Orbitron&display=swap');
+@import url('https://fonts.googleapis.com/css?family=Faster+One&display=swap');
 /* font-family: 'Bowlby One SC', cursive; */
 /* font-family: 'Orbitron', sans-serif; */
 *::before,*::after,*{

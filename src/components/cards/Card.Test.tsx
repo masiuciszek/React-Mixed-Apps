@@ -51,13 +51,11 @@ const CardsComp: React.FC<P> = () => {
     }
   };
 
-  console.log(cards);
-
 
   return (
     <StyledCard>
       <button type="button" onClick={getCard}>click</button>
-      {cards.map((card) => <CardItem key={card.id} card={card} />)}
+
     </StyledCard>
   );
 };

@@ -1,3 +1,5 @@
+/* eslint-disable @typescript-eslint/explicit-function-return-type */
+/* eslint-disable import/extensions */
 /* eslint-disable react/prop-types */
 /* eslint-disable no-shadow */
 /* eslint-disable @typescript-eslint/interface-name-prefix */
@@ -7,43 +9,40 @@ import { StyledCard } from './Cards.styles';
 import CardItem from './CardItem';
 import { AppState } from '../../redux';
 import { getDeckSelect, getCardsSelect, loadingSelect } from '../../redux/cardDeck/card.selector';
-import { fetchCard, getCards } from '../../redux/cardDeck/card.actions';
+import { fetchDeck, getCards } from '../../redux/cardDeck/card.actions';
 import { IDeck, ICard } from '../../redux/cardDeck/card.types';
+import { StyledBtn } from '../styled/Buttons';
 
 
 interface P {
   deck: IDeck | null;
-  cards: ICard[] | null;
+  cards: ICard[];
   loading: boolean;
-  fetchCard: Function;
+  fetchDeck: Function;
   getCards: Function;
 }
 
 
 const CardsComp: React.FC<P> = ({
-  deck, cards, loading, fetchCard, getCards,
+  deck, fetchDeck, cards, getCards, loading,
 }) => {
-  const url = 'https://deckofcardsapi.com/api/deck';
-
   React.useEffect(() => {
-    fetchCard();
-    console.log(cards);
-  }, [cards]);
-
+    fetchDeck();
+  }, []);
 
   return (
     <StyledCard>
-      <button type="button" onClick={() => getCards(deck?.deck_id)}>click</button>
+      <StyledBtn as="button" type="button" font onClick={() => getCards(deck)}>Get a Card</StyledBtn>
+      {!loading
+         && cards.length > 0 && cards.map((card) => <CardItem key={card.code} card={card} />) }
     </StyledCard>
   );
 };
-
 const mapStateToProps = (state: AppState) => ({
   deck: getDeckSelect(state),
   cards: getCardsSelect(state),
-  // cards: state.cards.cards,
   loading: loadingSelect(state),
 });
 
 
-export default connect(mapStateToProps, { fetchCard, getCards })(CardsComp);
+export default connect(mapStateToProps, { fetchDeck, getCards })(CardsComp);

@@ -11,6 +11,7 @@ const theme: DefaultTheme = {
   colors: {
     primary: '#2A2C2B',
     secondary: '#274250',
+    green: '#45BF55',
     danger: '#e14f3f',
     dark: '#767679',
     common: '#1B76FF',
