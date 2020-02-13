@@ -1,5 +1,9 @@
+/* eslint-disable @typescript-eslint/interface-name-prefix */
 import styled from 'styled-components';
 
+interface IStyledCardItem{
+  rotate: number;
+}
 
 export const StyledCard = styled.div`
   padding: 2rem;
@@ -23,12 +27,12 @@ export const CardItemHeader = styled.div`
   left: 0;
 `;
 
-export const StyledCardItem = styled.div`
+export const StyledCardItem = styled.div<IStyledCardItem>`
   position: relative;
+  transform: rotate(${(props) => `${props.rotate}deg`});
   img {
     position:absolute;
     left: 50%;
     transform: translate(-50%, 0);
-
   }
 `;

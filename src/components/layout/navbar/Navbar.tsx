@@ -1,16 +1,25 @@
+/* eslint-disable import/extensions */
 import * as React from 'react';
-import { StyledNav, StyledNavTitle, StyledNavList } from './Styles.nav';
+import { MenuAltRight } from 'styled-icons/boxicons-regular/MenuAltRight';
+import {
+  StyledNav, StyledNavTitle, StyledNavList, MenuIcon,
+} from './Styles.nav';
 import LargeNavList from './LargeNavList';
+import SmallList from './SmallList';
+import useToggle from '../../../hooks/useToggle';
 
 interface P {
 
 }
 
 const NavBar: React.FC<P> = () => {
-  let a;
+  const [show, toggleFn] = useToggle(false);
   return (
     <>
       <StyledNav>
+        <MenuIcon onClick={toggleFn}>
+          <MenuAltRight size="37" />
+        </MenuIcon>
         <StyledNavTitle>
           <h4>
             React
@@ -22,6 +31,7 @@ const NavBar: React.FC<P> = () => {
           </h4>
         </StyledNavTitle>
         <LargeNavList />
+        {show && <SmallList />}
       </StyledNav>
     </>
   );

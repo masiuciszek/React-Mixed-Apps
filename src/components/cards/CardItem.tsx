@@ -13,9 +13,10 @@ interface P {
 const CardItem: React.FC<P> = ({ card }) => (
   <>
     <CardItemHeader />
-    <StyledCardItem>
-      <img src={card.images.png} alt={card.value} style={{ rotate: `${Math.floor(Math.random() * randomPos(50))}deg` }} />
+    <StyledCardItem rotate={randomPos(50)}>
+      <img src={card.images.png} alt={card.value} />
     </StyledCardItem>
   </>
 );
 export default CardItem;
+// style={{ rotate: `${Math.floor(Math.random() * 50)}deg` }}
