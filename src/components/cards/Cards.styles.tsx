@@ -13,10 +13,15 @@ export const StyledCard = styled.div`
   button{
     position: absolute;
     top: 2rem;
-    cursor: pointer;
   }
 `;
 
+
+export const CardItemHeader = styled.div`
+  position: absolute;
+  top:  0;
+  left: 0;
+`;
 
 export const StyledCardItem = styled.div`
   position: relative;

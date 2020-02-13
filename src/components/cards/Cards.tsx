@@ -32,7 +32,7 @@ const CardsComp: React.FC<P> = ({
 
   return (
     <StyledCard>
-      <StyledBtn as="button" type="button" font onClick={() => getCards(deck)}>Get a Card</StyledBtn>
+      <StyledBtn disabled={loading} as="button" type="button" font onClick={() => getCards(deck)}>Get a Card</StyledBtn>
       {!loading
          && cards.length > 0 && cards.map((card) => <CardItem key={card.code} card={card} />) }
     </StyledCard>

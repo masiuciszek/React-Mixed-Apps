@@ -1,8 +1,9 @@
 /* eslint-disable import/extensions */
 /* eslint-disable react/prop-types */
 import * as React from 'react';
-import { StyledCardItem } from './Cards.styles';
+import { StyledCardItem, CardItemHeader } from './Cards.styles';
 import { ICard } from '../../redux/cardDeck/card.types';
+import { randomPos } from '../../utils/helpers';
 
 interface P {
   card: ICard;
@@ -11,8 +12,9 @@ interface P {
 
 const CardItem: React.FC<P> = ({ card }) => (
   <>
+    <CardItemHeader />
     <StyledCardItem>
-      <img src={card.images.png} alt={card.value} style={{ rotate: '23deg' }} />
+      <img src={card.images.png} alt={card.value} style={{ rotate: `${Math.floor(Math.random() * randomPos(50))}deg` }} />
     </StyledCardItem>
   </>
 );

@@ -27,6 +27,9 @@ export const getCards = (deck: IDeck) => async (dispatch: Dispatch<GetCardAction
   const id = deck.deck_id;
   try {
     const res = await axios.get(`https://deckofcardsapi.com/api/deck/${id}/draw/`);
+    if (!res.data.success) {
+      throw new Error('No more cards');
+    }
     const resBody = await res.data.cards[0];
     console.log('resBody   ', resBody);
     dispatch({ type: ActionTypesCards.GET_CARD, payload: resBody });
