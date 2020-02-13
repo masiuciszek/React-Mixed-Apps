@@ -1,59 +1,49 @@
+/* eslint-disable react/prop-types */
+/* eslint-disable no-shadow */
+/* eslint-disable @typescript-eslint/interface-name-prefix */
 import * as React from 'react';
-import axios from 'axios';
+import { connect } from 'react-redux';
 import { StyledCard } from './Cards.styles';
+import CardItem from './CardItem';
+import { AppState } from '../../redux';
+import { getDeckSelect, getCardsSelect, loadingSelect } from '../../redux/cardDeck/card.selector';
+import { fetchCard, getCards } from '../../redux/cardDeck/card.actions';
+import { IDeck, ICard } from '../../redux/cardDeck/card.types';
+
 
 interface P {
-
+  deck: IDeck | null;
+  cards: ICard[] | null;
+  loading: boolean;
+  fetchCard: Function;
+  getCards: Function;
 }
 
-interface IState {
-  deck_id: string;
-  remaining: number;
-  shuffled: boolean;
-  success: boolean;
-}
 
-const CardsComp: React.FC<P> = () => {
-  const [state, setState] = React.useState<IState| null>(null);
-  const [cards, setCards] = React.useState<any>([]);
-
-
+const CardsComp: React.FC<P> = ({
+  deck, cards, loading, fetchCard, getCards,
+}) => {
   const url = 'https://deckofcardsapi.com/api/deck';
-  // const url2 = 'https://deckofcardsapi.com/api/deck/new/shuffle/';
-
 
   React.useEffect(() => {
-    const fetchCard = async (): Promise<void> => {
-      const deck = await axios.get(`${url}/new/shuffle/`);
-      setState(deck.data);
-    };
-
     fetchCard();
-  }, []);
-  console.log(state);
-
-
-  const getCard = async (): Promise<void> => {
-    const id = state?.deck_id;
-    const cardUrl = `${url}/${id}/draw/`;
-    const cardRes = await axios.get(cardUrl);
-    // console.log(cardRes.data.cards);
-    const card = cardRes.data.cards[0];
-    setCards((c: any) => [...c, {
-      id: card.code, suit: card.suit, image: card.image, value: card.value,
-    }]);
-    console.log(card);
-  };
-
-  console.log(cards);
+    console.log(cards);
+  }, [cards]);
 
 
   return (
     <StyledCard>
-
-      <h1> Legia CWSKS </h1>
-      <button onClick={getCard}>click</button>
+      <button type="button" onClick={() => getCards(deck?.deck_id)}>click</button>
     </StyledCard>
   );
 };
-export default CardsComp;
+
+const mapStateToProps = (state: AppState) => ({
+  deck: getDeckSelect(state),
+  cards: getCardsSelect(state),
+  // cards: state.cards.cards,
+  loading: loadingSelect(state),
+});
+
+
+export default connect(mapStateToProps, { fetchCard, getCards })(CardsComp);

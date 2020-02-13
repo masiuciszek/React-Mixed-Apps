@@ -4,13 +4,14 @@ import { createLogger } from 'redux-logger';
 import { composeWithDevTools } from 'redux-devtools-extension';
 import thunk from 'redux-thunk';
 import starWarsReducer from './starwars/sw.reducer';
+import cardReducer from './cardDeck/card.reducer';
 
 
 const logger = createLogger();
 
 const rootReducer = combineReducers({
   starWars: starWarsReducer,
-  apa: () => 'apa',
+  cards: cardReducer,
 });
 
 
