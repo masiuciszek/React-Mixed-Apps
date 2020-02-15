@@ -9,7 +9,7 @@ export interface IJoke {
 
 
 export interface IJokeState {
-  jokes: IJoke[];
+  jokes: IJoke | null;
   loading: boolean;
   error: null;
 }
@@ -37,4 +37,4 @@ export interface FetchJokeFailed {
 }
 
 
-export type CardActionTypes = FetchJoke | LikeJoke |FetchJokeFailed
+export type JokeActionTypes = FetchJoke | LikeJoke | FetchJokeFailed

@@ -5,7 +5,7 @@ import { composeWithDevTools } from 'redux-devtools-extension';
 import thunk from 'redux-thunk';
 import starWarsReducer from './starwars/sw.reducer';
 import cardReducer from './cardDeck/card.reducer';
-import jokeReducer from './jokes/jokes.reducer';
+import jokesReducer from './jokes/jokes.reducer';
 
 
 const logger = createLogger();
@@ -13,7 +13,7 @@ const logger = createLogger();
 const rootReducer = combineReducers({
   starWars: starWarsReducer,
   cards: cardReducer,
-  jokes: jokeReducer,
+  jokes: jokesReducer,
 });
 
 

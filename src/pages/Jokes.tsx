@@ -1,21 +1,19 @@
 import * as React from 'react';
 import { BgWrapper, PageWrapper } from '../components/styled/Wrappers';
+import Jokes from '../components/jokes/Jokes';
 
 interface P {
 
 }
 
-const JokesApp: React.FC<P> = () => {
-  let a;
-  return (
-    <>
-      <BgWrapper>
-        <PageWrapper>
-          <h1> Jokes </h1>
-        </PageWrapper>
-      </BgWrapper>
+const JokesApp: React.FC<P> = () => (
+  <>
+    <BgWrapper>
+      <PageWrapper>
+        <Jokes />
+      </PageWrapper>
+    </BgWrapper>
 
-    </>
-  );
-};
+  </>
+);
 export default JokesApp;
