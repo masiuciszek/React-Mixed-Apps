@@ -5,6 +5,7 @@ const initialState: IJokeState = {
   jokes: [],
   loading: true,
   error: null,
+  votes: 0,
 };
 
 export default (state: IJokeState = initialState, action: JokeActionTypes) => {
@@ -14,6 +15,16 @@ export default (state: IJokeState = initialState, action: JokeActionTypes) => {
         ...state,
         jokes: action.payload,
         loading: false,
+      };
+    case ActionTypesJokes.LIKE_JOKE:
+      return {
+        ...state,
+        jokes: state.jokes.map((j) => (j.id === action.payload ? { ...j, votes: j.votes + 1 } : j)),
+      };
+    case ActionTypesJokes.DISLIKE_JOKE:
+      return {
+        ...state,
+        jokes: state.jokes.map((j) => (j.id === action.payload ? { ...j, votes: j.votes - 1 } : j)),
       };
     case ActionTypesJokes.FETCH_JOKE_FAILED:
       return {

@@ -1,3 +1,4 @@
+/* eslint-disable jsx-a11y/accessible-emoji */
 /* eslint-disable import/extensions */
 /* eslint-disable no-shadow */
 /* eslint-disable react/prop-types */
@@ -27,17 +28,12 @@ const Jokes: React.FC<P> = ({
   }, []);
 
 
-  // const addJoke = (): void => {
-  //   setJokesPlaceHolder((c: any) => [...c, { id: joke?.id, joke: joke?.joke }]);
-  // };
-
-
   return (
     <>
       <StyledJokeWrapper>
         <StyledSide>
           <JokeTitle>
-            <span className="Smiley">😉</span>
+            <span className="Smiley" role="img">😉</span>
             <h3>Jokes App</h3>
           </JokeTitle>
           <button type="button">Add joke</button>
