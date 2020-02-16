@@ -1,42 +1,73 @@
+/* eslint-disable import/extensions */
 /* eslint-disable no-shadow */
 /* eslint-disable react/prop-types */
 import * as React from 'react';
 import { connect } from 'react-redux';
 import { AppState } from '../../redux';
-import { fetchJokes } from '../../redux/jokes/jokes.actions';
+import { fetchJokes, addJokes } from '../../redux/jokes/jokes.actions';
 import { IJoke } from '../../redux/jokes/jokes.types';
-import { selectJokesList, selectJokesLoading } from '../../redux/jokes/joke.select';
+import { selectJokesList, selectJokesLoading, selectAddJokesXS } from '../../redux/jokes/joke.select';
+import JokeItem from './JokeItem';
+import {
+  StyledJokeWrapper, StyledSide, StyledJokes, JokeTitle,
+} from './Styles.jokes';
 
 interface P {
-  jokes: IJoke | null;
+  joke: IJoke | null;
+  jokesXS: IJoke[];
   fetchJokes: Function;
+  addJokes: Function;
   loading: boolean;
 }
 
 
-const Jokes: React.FC<P> = ({ jokes, fetchJokes, loading }) => {
-  const [JokesPlaceHolder, setJokesPlaceHolder] = React.useState<IJoke[]>([]);
+const Jokes: React.FC<P> = ({
+  joke, fetchJokes, loading, addJokes, jokesXS,
+}) => {
+  const [jokesPlaceHolder, setJokesPlaceHolder] = React.useState<IJoke[]>([]);
 
   React.useEffect(() => {
-    fetchJokes();
+    const xs = [];
+    while (xs.length < 10) {
+      fetchJokes();
+      xs.push(joke);
+    }
+    console.log(xs);
   }, []);
 
-  console.log('JOKE OBJ ', jokes?.joke);
 
+  // const addJoke = (): void => {
+  //   setJokesPlaceHolder((c: any) => [...c, { id: joke?.id, joke: joke?.joke }]);
+  // };
+
+
+  console.log('jokesXS  ', jokesXS);
 
   return (
-    <div>
-      {' '}
-      <h1> Legia CWSKS </h1>
-      {' '}
-    </div>
+    <>
+      <StyledJokeWrapper>
+        <StyledSide>
+          <JokeTitle>
+            <h3>Jokes App</h3>
+          </JokeTitle>
+          <button type="button" onClick={() => addJokes(joke)}>Add joke</button>
+        </StyledSide>
+        <StyledJokes>
+          {!loading && jokesPlaceHolder.length > 0 ? jokesPlaceHolder.map(
+            (joke) => <JokeItem key={joke.id} j={joke} />,
+          ) : <h3 className="info">Click to Fetch some jokes</h3> }
+        </StyledJokes>
+      </StyledJokeWrapper>
+    </>
   );
 };
 
 
 const mapStateToProps = (state: AppState) => ({
-  jokes: selectJokesList(state),
+  joke: selectJokesList(state),
+  jokesXS: selectAddJokesXS(state),
   loading: selectJokesLoading(state),
 });
 
-export default connect(mapStateToProps, { fetchJokes })(Jokes);
+
+export default connect(mapStateToProps, { fetchJokes, addJokes })(Jokes);

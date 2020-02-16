@@ -2,7 +2,8 @@
 import { IJokeState, ActionTypesJokes, JokeActionTypes } from './jokes.types';
 
 const initialState: IJokeState = {
-  jokes: null,
+  joke: null,
+  jokesXS: [],
   loading: true,
   error: null,
 };
@@ -12,7 +13,13 @@ export default (state: IJokeState = initialState, action: JokeActionTypes) => {
     case ActionTypesJokes.FETCH_JOKE:
       return {
         ...state,
-        jokes: action.payload,
+        joke: action.payload,
+        loading: false,
+      };
+    case ActionTypesJokes.ADD_JOKES:
+      return {
+        ...state,
+        jokesXS: [...state.jokesXS, action.payload],
         loading: false,
       };
     case ActionTypesJokes.FETCH_JOKE_FAILED:

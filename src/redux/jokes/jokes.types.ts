@@ -9,7 +9,8 @@ export interface IJoke {
 
 
 export interface IJokeState {
-  jokes: IJoke | null;
+  joke: IJoke | null;
+  jokesXS: IJoke[];
   loading: boolean;
   error: null;
 }
@@ -18,6 +19,7 @@ export interface IJokeState {
 export enum ActionTypesJokes {
   FETCH_JOKE = 'FETCH_JOKE',
   LIKE_JOKE = 'LIKE_JOKE',
+  ADD_JOKES = 'ADD_JOKES',
   FETCH_JOKE_FAILED = 'FETCH_JOKE_FAILED',
 }
 
@@ -28,7 +30,11 @@ export interface FetchJoke {
 
 export interface LikeJoke {
   type: ActionTypesJokes.LIKE_JOKE;
+}
 
+export interface AddJokes {
+  type: ActionTypesJokes.ADD_JOKES;
+  payload: IJoke;
 }
 
 export interface FetchJokeFailed {
@@ -37,4 +43,4 @@ export interface FetchJokeFailed {
 }
 
 
-export type JokeActionTypes = FetchJoke | LikeJoke | FetchJokeFailed
+export type JokeActionTypes = FetchJoke | LikeJoke | FetchJokeFailed | AddJokes
