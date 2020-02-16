@@ -7,12 +7,12 @@ export const StyledJokeWrapper = styled.div`
   height: 80vh;
   display:flex;
   /* flex-direction:column; */
-  overflow:scroll;
+
 `;
 
 export const StyledSide = styled.div`
   padding: 2rem;
-  height: 80vh;
+  height: 100%;
   width: 30%;
   display:flex;
   flex-direction:column;
@@ -20,6 +20,7 @@ export const StyledSide = styled.div`
   color: ${({ theme }) => theme.colors.offWhite};
   align-items:center;
   justify-content:center;
+
 `;
 
 export const StyledJokes = styled.div`
@@ -28,6 +29,7 @@ export const StyledJokes = styled.div`
   flex-direction:column;
   align-items: center;
   height: 100%;
+  overflow:scroll;
   .info{
     font-size: 1.6rem;
     padding: 2rem;
@@ -35,12 +37,23 @@ export const StyledJokes = styled.div`
 `;
 
 export const StyledJokeItem = styled.div`
-
+  display: flex;
+  padding: .8rem;
+  border: 2px solid ${(props) => props.theme.colors.primary};
+  width: 100%;
+  strong{
+    font-size: 1.2rem;
+  }
 `;
 
 
 export const JokeTitle = styled.div`
-
+  .Smiley{
+    font-size: 6rem;
+    text-align: center;
+    margin: 0 auto;
+    display: block;
+  }
   h3{
     font-size: 2rem;
     letter-spacing: .1rem;

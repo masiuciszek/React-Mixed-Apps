@@ -3,7 +3,7 @@ import { IJoke } from '../../redux/jokes/jokes.types';
 import { StyledJokeItem } from './Styles.jokes';
 
 interface P {
-  j: any;
+  j: IJoke;
 }
 
 const JokeItem: React.FC<P> = ({ j }) => {
@@ -15,7 +15,7 @@ const JokeItem: React.FC<P> = ({ j }) => {
       {' '}
       <strong>
         {' '}
-        <h1>s</h1>
+        {joke}
         {' '}
       </strong>
       {' '}

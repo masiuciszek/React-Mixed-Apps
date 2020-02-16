@@ -4,35 +4,26 @@
 import * as React from 'react';
 import { connect } from 'react-redux';
 import { AppState } from '../../redux';
-import { fetchJokes, addJokes } from '../../redux/jokes/jokes.actions';
+import { fetchJokes } from '../../redux/jokes/jokes.actions';
 import { IJoke } from '../../redux/jokes/jokes.types';
-import { selectJokesList, selectJokesLoading, selectAddJokesXS } from '../../redux/jokes/joke.select';
+import { selectJokesList, selectJokesLoading } from '../../redux/jokes/joke.select';
 import JokeItem from './JokeItem';
 import {
   StyledJokeWrapper, StyledSide, StyledJokes, JokeTitle,
 } from './Styles.jokes';
 
 interface P {
-  joke: IJoke | null;
-  jokesXS: IJoke[];
+  jokes: IJoke[];
   fetchJokes: Function;
-  addJokes: Function;
   loading: boolean;
 }
 
 
 const Jokes: React.FC<P> = ({
-  joke, fetchJokes, loading, addJokes, jokesXS,
+  jokes, fetchJokes, loading,
 }) => {
-  const [jokesPlaceHolder, setJokesPlaceHolder] = React.useState<IJoke[]>([]);
-
   React.useEffect(() => {
-    const xs = [];
-    while (xs.length < 10) {
-      fetchJokes();
-      xs.push(joke);
-    }
-    console.log(xs);
+    fetchJokes();
   }, []);
 
 
@@ -41,21 +32,20 @@ const Jokes: React.FC<P> = ({
   // };
 
 
-  console.log('jokesXS  ', jokesXS);
-
   return (
     <>
       <StyledJokeWrapper>
         <StyledSide>
           <JokeTitle>
+            <span className="Smiley">😉</span>
             <h3>Jokes App</h3>
           </JokeTitle>
-          <button type="button" onClick={() => addJokes(joke)}>Add joke</button>
+          <button type="button">Add joke</button>
         </StyledSide>
         <StyledJokes>
-          {!loading && jokesPlaceHolder.length > 0 ? jokesPlaceHolder.map(
+          {!loading && jokes.length > 0 ? jokes.map(
             (joke) => <JokeItem key={joke.id} j={joke} />,
-          ) : <h3 className="info">Click to Fetch some jokes</h3> }
+          ) : <h3 className="info">...Loading</h3> }
         </StyledJokes>
       </StyledJokeWrapper>
     </>
@@ -64,10 +54,9 @@ const Jokes: React.FC<P> = ({
 
 
 const mapStateToProps = (state: AppState) => ({
-  joke: selectJokesList(state),
-  jokesXS: selectAddJokesXS(state),
+  jokes: selectJokesList(state),
   loading: selectJokesLoading(state),
 });
 
 
-export default connect(mapStateToProps, { fetchJokes, addJokes })(Jokes);
+export default connect(mapStateToProps, { fetchJokes })(Jokes);

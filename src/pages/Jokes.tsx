@@ -1,3 +1,4 @@
+/* eslint-disable import/extensions */
 import * as React from 'react';
 import { BgWrapper, PageWrapper } from '../components/styled/Wrappers';
 import Jokes from '../components/jokes/Jokes';

@@ -12,8 +12,8 @@ export const BgWrapper = styled.div<IBgWrapper>`
 
 export const PageWrapper = styled.div`
   width: 100%;
-  padding-right: 1rem;
-  padding-left: 1rem;
+  padding-right: .4rem;
+  padding-left: .4rem;
   margin-right: auto;
   margin-left: auto;
   min-height: 50vh;

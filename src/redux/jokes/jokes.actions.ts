@@ -1,7 +1,9 @@
+/* eslint-disable import/extensions */
+/* eslint-disable no-await-in-loop */
 import axios from 'axios';
 import { Dispatch } from 'react';
 import {
-  FetchJoke, FetchJokeFailed, ActionTypesJokes, AddJokes, IJoke,
+  FetchJoke, FetchJokeFailed, ActionTypesJokes, IJoke,
 } from './jokes.types';
 
 
@@ -12,20 +14,17 @@ export const fetchJoesFailed = (err: Record<string, any>): FetchJokeFailed => ({
 
 export const fetchJokes = () => async (dispatch: Dispatch<FetchJoke>) => {
   try {
-    const res = await axios.get('https://icanhazdadjoke.com/', { headers: { Accept: 'application/json' } });
-    const resBody = await res.data;
+    const xs = [];
+    while (xs.length <= 10) {
+      const res = await axios.get('https://icanhazdadjoke.com/', { headers: { Accept: 'application/json' } });
+      xs.push(res.data);
+    }
     dispatch({
       type: ActionTypesJokes.FETCH_JOKE,
-      payload: resBody,
+      payload: xs,
     });
   } catch (err) {
     console.error(err);
     fetchJoesFailed(err);
   }
 };
-
-
-export const addJokes = (joke: IJoke): AddJokes => ({
-  type: ActionTypesJokes.ADD_JOKES,
-  payload: joke,
-});
