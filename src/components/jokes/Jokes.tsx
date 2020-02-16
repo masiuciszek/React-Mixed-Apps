@@ -5,27 +5,34 @@
 import * as React from 'react';
 import { connect } from 'react-redux';
 import { AppState } from '../../redux';
-import { fetchJokes } from '../../redux/jokes/jokes.actions';
+import { fetchJokes, cleanJokes } from '../../redux/jokes/jokes.actions';
 import { IJoke } from '../../redux/jokes/jokes.types';
 import { selectJokesList, selectJokesLoading } from '../../redux/jokes/joke.select';
 import JokeItem from './JokeItem';
 import {
   StyledJokeWrapper, StyledSide, StyledJokes, JokeTitle,
 } from './Styles.jokes';
+import { StyledBtn } from '../styled/Buttons';
 
 interface P {
   jokes: IJoke[];
   fetchJokes: Function;
+  cleanJokes: Function;
   loading: boolean;
 }
 
 
 const Jokes: React.FC<P> = ({
-  jokes, fetchJokes, loading,
+  jokes, fetchJokes, loading, cleanJokes,
 }) => {
   React.useEffect(() => {
     fetchJokes();
   }, []);
+
+  const handleNewJokes = () => {
+    cleanJokes();
+    fetchJokes();
+  };
 
 
   return (
@@ -36,7 +43,7 @@ const Jokes: React.FC<P> = ({
             <span className="Smiley" role="img">😉</span>
             <h3>Jokes App</h3>
           </JokeTitle>
-          <button type="button">Add joke</button>
+          <StyledBtn as="button" onClick={handleNewJokes}>Fetch new Jokes</StyledBtn>
         </StyledSide>
         <StyledJokes>
           {!loading && jokes.length > 0 ? jokes.map(
@@ -55,4 +62,4 @@ const mapStateToProps = (state: AppState) => ({
 });
 
 
-export default connect(mapStateToProps, { fetchJokes })(Jokes);
+export default connect(mapStateToProps, { fetchJokes, cleanJokes })(Jokes);

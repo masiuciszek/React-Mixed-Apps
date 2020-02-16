@@ -1,35 +1,53 @@
 /* eslint-disable import/extensions */
-import { createStore, applyMiddleware, combineReducers } from 'redux';
+import {
+  createStore, applyMiddleware, Store, Middleware,
+} from 'redux';
 import { createLogger } from 'redux-logger';
 import { composeWithDevTools } from 'redux-devtools-extension';
 import thunk from 'redux-thunk';
-import starWarsReducer from './starwars/sw.reducer';
-import cardReducer from './cardDeck/card.reducer';
-import jokesReducer from './jokes/jokes.reducer';
-
+import { persistStore } from 'redux-persist';
+import rootReducer from './rootReducer';
 
 const logger = createLogger();
-
-const rootReducer = combineReducers({
-  starWars: starWarsReducer,
-  cards: cardReducer,
-  jokes: jokesReducer,
-});
 
 
 // const sagaMiddleware = createSagaMiddleware();
 export type AppState = ReturnType<typeof rootReducer>
 
 
-export default () => {
-  const middleWares = [logger, thunk];
+export const configureStore = () => {
+  const middleWares: Middleware[] = [];
+  if (process.env.NODE_ENV === 'development') {
+    middleWares.push(logger, thunk);
+  }
+  if (process.env.NODE_ENV === 'production') {
+    middleWares.push(thunk);
+  }
+  if (process.env.NODE_ENV === 'test') {
+    middleWares.push(logger, thunk);
+  }
   const middlewareEnhancer = applyMiddleware(...middleWares);
 
   const store = createStore(
     rootReducer,
     composeWithDevTools(middlewareEnhancer),
   );
-
-  // sagaMiddleware.run(rootSaga);
   return store;
 };
+
+
+export const store: any = configureStore();
+
+export const persistor = persistStore(store);
+
+// const middleware = [];
+
+
+// const middleWareEnhancer = applyMiddleware(...middleware);
+
+// export const store: any = createStore(
+//   rootReducer,
+//   composeWithDevTools(middleWareEnhancer),
+// );
+
+// export const persistor = persistStore(store);

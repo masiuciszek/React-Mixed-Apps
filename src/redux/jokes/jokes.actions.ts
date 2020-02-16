@@ -4,7 +4,7 @@ import axios from 'axios';
 import uuid from 'uuid/v4';
 import { Dispatch } from 'react';
 import {
-  FetchJoke, FetchJokeFailed, ActionTypesJokes, IJoke, LikeJoke, DisLikeJoke,
+  FetchJoke, FetchJokeFailed, ActionTypesJokes, IJoke, LikeJoke, DisLikeJoke, CleanJokes,
 } from './jokes.types';
 
 
@@ -39,3 +39,8 @@ export const likeJoke = (id: string): LikeJoke => (
 
 export const dislikeJoke = (id: string): DisLikeJoke => (
   { type: ActionTypesJokes.DISLIKE_JOKE, payload: id });
+
+
+export const cleanJokes = (): CleanJokes => ({
+  type: ActionTypesJokes.CLEAN_JOKES,
+});

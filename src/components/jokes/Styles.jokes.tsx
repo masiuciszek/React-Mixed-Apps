@@ -27,6 +27,14 @@ export const StyledSide = styled.div`
   align-items:center;
   justify-content:center;
 
+  button {
+    color: ${(props) => props.theme.colors.white};
+    background: ${(props) => props.theme.colors.danger};
+    position: relative;
+    &:active{
+      top: .2rem;
+    }
+  }
 `;
 
 export const StyledJokes = styled.div`

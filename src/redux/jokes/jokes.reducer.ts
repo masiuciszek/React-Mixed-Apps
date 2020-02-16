@@ -26,6 +26,12 @@ export default (state: IJokeState = initialState, action: JokeActionTypes) => {
         ...state,
         jokes: state.jokes.map((j) => (j.id === action.payload ? { ...j, votes: j.votes - 1 } : j)),
       };
+    case ActionTypesJokes.CLEAN_JOKES:
+      return {
+        ...state,
+        jokes: state.jokes = [],
+        loading: false,
+      };
     case ActionTypesJokes.FETCH_JOKE_FAILED:
       return {
         ...state,
