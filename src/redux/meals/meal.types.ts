@@ -9,15 +9,25 @@ export interface IMeal {
   strInstructions: string;
 }
 
+export interface IFoodCategory {
+  idCategory: string;
+  strCategory: string;
+  strCategoryThumb: string;
+  strCategoryDescription: string;
+}
+
 export interface IIngredient {
   idMeal: string;
   strMeal: string;
   strMealThumb: string;
 }
+
+
 export interface IMealState {
   meals: IMeal[];
   meal: IMeal | null;
   ingredient: IIngredient | null;
+  categories: IFoodCategory[];
   loading: boolean;
   error: null;
 }
@@ -25,6 +35,7 @@ export interface IMealState {
 
 export enum ActionTypesMeals {
   GET_MEAL = 'GET_MEAL',
+  GET_CATEGORIES = 'GET_CATEGORIES',
   GET_RANDOM_MEAL = 'GET_RANDOM_MEAL',
   GET_MEAL_BY_LETTER = 'GET_MEAL_BY_LETTER',
   GET_MEAL_FAILED = 'GET_MEAL_FAILED',
@@ -46,6 +57,11 @@ export interface GetMealByLetterAction {
   payload: IMeal[];
 }
 
+export interface GetCategoriesAction {
+  type: ActionTypesMeals.GET_CATEGORIES;
+  payload: IFoodCategory[];
+}
+
 
 export interface GetMealFailed {
   type: ActionTypesMeals.GET_MEAL_FAILED;
@@ -56,4 +72,5 @@ export type MealActionTypes =
  GetMealAction |
  GetMealRandomMealAction |
  GetMealFailed|
- GetMealByLetterAction
+ GetMealByLetterAction|
+ GetCategoriesAction

@@ -1,7 +1,7 @@
 import axios from 'axios';
 import { Dispatch } from 'react';
 import {
-  ActionTypesMeals, GetMealRandomMealAction, GetMealFailed, GetMealByLetterAction,
+  ActionTypesMeals, GetMealRandomMealAction, GetMealFailed, GetMealByLetterAction, GetCategoriesAction,
 } from './meal.types';
 
 export const catchErr = (err: Record<string, any>): GetMealFailed => (
@@ -31,6 +31,21 @@ export const getMealByLetter = (letter: string) => async (dispatch: Dispatch<Get
     dispatch({
       type: ActionTypesMeals.GET_MEAL_BY_LETTER,
       payload: resBody,
+    });
+  } catch (err) {
+    console.error(err);
+    catchErr(err);
+  }
+};
+
+
+export const getMealByCategories = () => async (dispatch: Dispatch<GetCategoriesAction>): Promise<void> => {
+  try {
+    const res = await axios.get('https://www.themealdb.com/api/json/v1/1/categories.php');
+    const resBody = await res.data;
+    dispatch({
+      type: ActionTypesMeals.GET_CATEGORIES,
+      payload: resBody.categories,
     });
   } catch (err) {
     console.error(err);

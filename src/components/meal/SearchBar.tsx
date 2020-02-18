@@ -1,3 +1,4 @@
+/* eslint-disable no-shadow */
 import * as React from 'react';
 import { connect } from 'react-redux';
 import { StyledSearchBar } from './Styled.Meal';
@@ -12,7 +13,7 @@ const SearchBar: React.FC<P> = ({ getMealByLetter }) => {
   return (
     <>
 
-      <StyledSearchBar onChange={(e: any) => getMealByLetter(e.target.value)} placeholder="Search for a meal" />
+      <StyledSearchBar onChange={(e) => getMealByLetter(e.target.value)} placeholder="Search for a meal" />
 
     </>
   );

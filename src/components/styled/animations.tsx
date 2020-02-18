@@ -17,8 +17,19 @@ export const flexGrow = keyframes`
     flex-grow: 1;
   }
 }
+`;
+
+export const fade = keyframes`
+0%{
+  opacity: 0;
+}
+100%{
+  opacity: 1;
+}
 
 `;
+
+
 export const flexRotate = keyframes`
 0% {
     transform: rotate(90deg);

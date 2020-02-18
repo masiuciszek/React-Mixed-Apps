@@ -4,8 +4,9 @@ import { IMealState, MealActionTypes, ActionTypesMeals } from './meal.types';
 const initialState: IMealState = {
   meals: [],
   meal: null,
+  categories: [],
   ingredient: null,
-  loading: false,
+  loading: true,
   error: null,
 };
 
@@ -25,7 +26,12 @@ export default (state: IMealState = initialState, action: MealActionTypes) => {
         meals: action.payload,
         loading: false,
       };
-
+    case ActionTypesMeals.GET_CATEGORIES:
+      return {
+        ...state,
+        categories: action.payload,
+        loading: false,
+      };
     case ActionTypesMeals.GET_MEAL_FAILED:
       return {
         ...state,
