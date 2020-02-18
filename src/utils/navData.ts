@@ -39,6 +39,11 @@ export const navData: INavData[] = [
   },
   {
     id: uuid(),
+    text: 'meals',
+    path: '/meals',
+  },
+  {
+    id: uuid(),
     text: 'contact',
     path: '/contact',
   },

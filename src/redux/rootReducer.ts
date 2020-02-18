@@ -5,6 +5,7 @@ import { combineReducers } from 'redux';
 import starWarsReducer from './starwars/sw.reducer';
 import cardReducer from './cardDeck/card.reducer';
 import jokesReducer from './jokes/jokes.reducer';
+import mealReducer from './meals/meal.reducer';
 
 
 interface IPersistConfig {
@@ -25,6 +26,7 @@ const rootReducer = combineReducers({
   starWars: starWarsReducer,
   cards: cardReducer,
   jokes: jokesReducer,
+  meals: mealReducer,
 });
 
 
