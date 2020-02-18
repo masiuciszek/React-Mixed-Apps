@@ -13,6 +13,7 @@ import {
   StyledJokeWrapper, StyledSide, StyledJokes, JokeTitle,
 } from './Styles.jokes';
 import { StyledBtn } from '../styled/Buttons';
+import Spinner from '../styled/Spinner';
 
 interface P {
   jokes: IJoke[];
@@ -47,8 +48,8 @@ const Jokes: React.FC<P> = ({
         </StyledSide>
         <StyledJokes>
           {!loading && jokes.length > 0 ? jokes.map(
-            (joke) => <JokeItem key={joke.id} j={joke} />,
-          ) : <h3 className="info">...Loading</h3> }
+            (joke: IJoke) => <JokeItem key={joke.id} j={joke} />,
+          ) : <Spinner /> }
         </StyledJokes>
       </StyledJokeWrapper>
     </>

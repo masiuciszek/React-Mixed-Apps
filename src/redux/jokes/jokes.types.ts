@@ -10,7 +10,7 @@ export interface IJoke {
 
 
 export interface IJokeState {
-  jokes: IJoke[] ;
+  jokes: IJoke[];
   loading: boolean;
   error: null;
   votes: number;

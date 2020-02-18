@@ -8,12 +8,11 @@ interface ILikeArea {
 
 export const StyledJokeWrapper = styled.div`
   margin: 4rem auto;
-  border: 3px solid ${(props) => props.theme.colors.secondary};
   height: 80vh;
   width: 100%;
   display:flex;
   box-shadow: ${(props) => props.theme.shadow.lightShadow};
-
+  position: relative;
 `;
 
 export const StyledSide = styled.div`
@@ -26,7 +25,8 @@ export const StyledSide = styled.div`
   color: ${({ theme }) => theme.colors.offWhite};
   align-items:center;
   justify-content:center;
-
+  transform: rotate(7deg);
+  border: 2px solid ${(props) => props.theme.colors.white};
   button {
     color: ${(props) => props.theme.colors.white};
     background: ${(props) => props.theme.colors.danger};
@@ -44,6 +44,8 @@ export const StyledJokes = styled.div`
   align-items: center;
   height: 100%;
   overflow:scroll;
+  z-index:2;
+
   .info{
     font-size: 1.6rem;
     padding: 2rem;

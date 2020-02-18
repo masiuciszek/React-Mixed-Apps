@@ -1,3 +1,5 @@
+/* eslint-disable no-return-assign */
+/* eslint-disable no-param-reassign */
 /* eslint-disable import/extensions */
 import { IJokeState, ActionTypesJokes, JokeActionTypes } from './jokes.types';
 
