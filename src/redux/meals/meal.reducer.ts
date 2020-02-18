@@ -21,6 +21,7 @@ export default (state: IMealState = initialState, action: MealActionTypes) => {
         loading: false,
       };
     case ActionTypesMeals.GET_MEAL_BY_LETTER:
+    case ActionTypesMeals.GET_MEAL_BY_NAME:
       return {
         ...state,
         meals: action.payload,
@@ -31,6 +32,11 @@ export default (state: IMealState = initialState, action: MealActionTypes) => {
         ...state,
         categories: action.payload,
         loading: false,
+      };
+    case ActionTypesMeals.CLEAR_SEARCH:
+      return {
+        ...state,
+        meals: [],
       };
     case ActionTypesMeals.GET_MEAL_FAILED:
       return {

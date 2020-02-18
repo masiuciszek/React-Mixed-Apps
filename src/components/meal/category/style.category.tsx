@@ -2,12 +2,20 @@ import styled from 'styled-components';
 import { fade } from '../../styled/animations';
 
 export const StyledCategory = styled.div`
-  padding: 1rem;
+  padding: 3rem 1rem;
   display: flex;
   flex-wrap:wrap;
   margin: 0 auto;
   justify-content:center;
   align-items:center;
+  position: relative;
+  #CategoriesBtn{
+    text-align: center;
+    background: ${({ theme }) => theme.colors.danger};
+    font-size: 1.2rem;
+    position: absolute;
+    top: -1rem;
+  }
 
 `;
 
@@ -17,10 +25,17 @@ export const StyledCategoryItem = styled.div`
   margin: 1rem;
   width: 26rem;
   border-radius:1rem;
+  transition: ${(props) => props.theme.transition.mainTransition};
+  &:hover{
+    background: ${(props) => props.theme.colors.darkRGBA};
+    box-shadow: ${(props) => props.theme.shadow.darkShadow};
+  }
   @media(max-width:990px){
     width: 100%;
   }
 `;
+
+
 export const StyledCategoryItemHeader = styled.div`
   display: flex;
   flex-direction: column;

@@ -8,6 +8,10 @@ export const StyledMeal = styled.div`
   justify-content: center;
   align-items:center;
   justify-content:center;
+  section:nth-child(1){
+    letter-spacing: .1rem;
+    border-bottom: 2px solid ${(props) => props.theme.colors.white};
+  }
 `;
 
 export const StyledSearchBar = styled.input`

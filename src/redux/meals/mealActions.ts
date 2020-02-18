@@ -1,7 +1,9 @@
 import axios from 'axios';
 import { Dispatch } from 'react';
 import {
-  ActionTypesMeals, GetMealRandomMealAction, GetMealFailed, GetMealByLetterAction, GetCategoriesAction,
+  ActionTypesMeals, GetMealRandomMealAction,
+  ClearSearchAction,
+  GetMealFailed, GetMealByLetterAction, GetCategoriesAction, GetMealsByNameAction,
 } from './meal.types';
 
 export const catchErr = (err: Record<string, any>): GetMealFailed => (
@@ -24,7 +26,8 @@ export const GetRandomMeal = () => async (dispatch: Dispatch<GetMealRandomMealAc
 };
 
 
-export const getMealByLetter = (letter: string) => async (dispatch: Dispatch<GetMealByLetterAction>): Promise<void> => {
+export const getMealByLetter = (letter: string) => async (
+  dispatch: Dispatch<GetMealByLetterAction>): Promise<void> => {
   try {
     const res = await axios.get(`https://www.themealdb.com/api/json/v1/1/search.php?f=${letter}`);
     const resBody = await res.data;
@@ -39,7 +42,8 @@ export const getMealByLetter = (letter: string) => async (dispatch: Dispatch<Get
 };
 
 
-export const getMealByCategories = () => async (dispatch: Dispatch<GetCategoriesAction>): Promise<void> => {
+export const getMealByCategories = () => async (
+  dispatch: Dispatch<GetCategoriesAction>): Promise<void> => {
   try {
     const res = await axios.get('https://www.themealdb.com/api/json/v1/1/categories.php');
     const resBody = await res.data;
@@ -52,3 +56,22 @@ export const getMealByCategories = () => async (dispatch: Dispatch<GetCategories
     catchErr(err);
   }
 };
+
+export const getMealByName = (mealName: string) => async (
+  dispatch: Dispatch<GetMealsByNameAction>): Promise<void> => {
+  try {
+    const res = await axios.get(`https://www.themealdb.com/api/json/v1/1/search.php?s=${mealName}`);
+    const resBody = await res.data;
+    dispatch({
+      type: ActionTypesMeals.GET_MEAL_BY_NAME,
+      payload: resBody.meals,
+    });
+  } catch (err) {
+    console.error(err);
+    catchErr(err);
+  }
+};
+
+export const clearMeals = (): ClearSearchAction => ({
+  type: ActionTypesMeals.CLEAR_SEARCH,
+});

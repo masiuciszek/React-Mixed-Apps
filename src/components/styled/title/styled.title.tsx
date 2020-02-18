@@ -7,9 +7,8 @@ interface IHeading {
   size?: string;
 }
 
-export const StyledTitle = styled.div`
+export const StyledTitle = styled.section`
   padding: 1rem;
-  border: 2px solid red;
   display: flex;
   flex-direction: column;
   justify-content: center;

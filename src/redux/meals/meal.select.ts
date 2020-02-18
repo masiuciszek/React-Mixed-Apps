@@ -10,6 +10,11 @@ export const selectCategories = createSelector(
   (state: IMealState) => state.categories,
 );
 
+export const selectMealList = createSelector(
+  [selectMeals],
+  (state: IMealState) => state.meals,
+);
+
 export const selectMealLoading = createSelector(
   [selectMeals],
   (state: IMealState) => state.loading,

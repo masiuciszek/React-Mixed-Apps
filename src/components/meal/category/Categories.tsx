@@ -1,3 +1,5 @@
+/* eslint-disable import/extensions */
+/* eslint-disable @typescript-eslint/explicit-function-return-type */
 /* eslint-disable react/prop-types */
 /* eslint-disable no-shadow */
 import * as React from 'react';
@@ -9,6 +11,8 @@ import { IFoodCategory } from '../../../redux/meals/meal.types';
 import CateGoreItem from './CateGoreItem';
 import Spinner from '../../styled/Spinner';
 import { StyledCategory } from './style.category';
+import useToggle from '../../../hooks/useToggle';
+import { StyledBtn } from '../../styled/Buttons';
 
 interface P {
   foodCategories: IFoodCategory[];
@@ -21,12 +25,20 @@ const Categories: React.FC<P> = ({ foodCategories, getMealByCategories, loading 
     getMealByCategories();
   }, []);
 
+  const [showCategories, toggleCategories] = useToggle(false);
+
   return (
     <>
       <StyledCategory>
-        {!loading && foodCategories.length > 0 ? foodCategories.map(
-          (f) => <CateGoreItem key={f.idCategory} category={f} />,
-        ) : <Spinner /> }
+        <StyledBtn id="CategoriesBtn" onClick={toggleCategories}>Categories</StyledBtn>
+        {
+          showCategories && (
+            !loading && foodCategories.length > 0 ? foodCategories.map(
+              (f) => <CateGoreItem key={f.idCategory} category={f} />,
+            ) : <Spinner />
+
+          )
+        }
       </StyledCategory>
     </>
   );

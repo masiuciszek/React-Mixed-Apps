@@ -35,10 +35,12 @@ export interface IMealState {
 
 export enum ActionTypesMeals {
   GET_MEAL = 'GET_MEAL',
+  GET_MEAL_BY_NAME = 'GET_MEAL_BY_NAME',
   GET_CATEGORIES = 'GET_CATEGORIES',
   GET_RANDOM_MEAL = 'GET_RANDOM_MEAL',
   GET_MEAL_BY_LETTER = 'GET_MEAL_BY_LETTER',
   GET_MEAL_FAILED = 'GET_MEAL_FAILED',
+  CLEAR_SEARCH = 'CLEAR_SEARCH',
 }
 
 export interface GetMealAction {
@@ -61,6 +63,14 @@ export interface GetCategoriesAction {
   type: ActionTypesMeals.GET_CATEGORIES;
   payload: IFoodCategory[];
 }
+export interface GetMealsByNameAction {
+  type: ActionTypesMeals.GET_MEAL_BY_NAME;
+  payload: IMeal[];
+}
+
+export interface ClearSearchAction {
+  type: ActionTypesMeals.CLEAR_SEARCH;
+}
 
 
 export interface GetMealFailed {
@@ -73,4 +83,6 @@ export type MealActionTypes =
  GetMealRandomMealAction |
  GetMealFailed|
  GetMealByLetterAction|
- GetCategoriesAction
+ GetCategoriesAction |
+ GetMealsByNameAction|
+ ClearSearchAction
