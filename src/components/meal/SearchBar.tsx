@@ -1,3 +1,4 @@
+/* eslint-disable import/extensions */
 /* eslint-disable react/prop-types */
 /* eslint-disable no-shadow */
 import * as React from 'react';

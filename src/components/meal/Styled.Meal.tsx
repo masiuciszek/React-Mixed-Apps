@@ -36,3 +36,91 @@ export const StyledSearchBar = styled.input`
     width: 70%;
   }
 `;
+
+export const MealGrid = styled.section`
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+
+@media(min-width: 800px){
+
+  display: grid;
+  grid-template-columns: repeat(2, minmax(200px, 1fr));
+  grid-gap: 10px;
+}
+  @media(min-width: 1100px){
+  /* grid-template-columns: repeat(auto-fit, minmax(400px, 2fr)); */
+  display: grid;
+  grid-template-columns: repeat(3, minmax(300px, 1fr));
+  grid-gap: 10px;
+  }
+`;
+
+export const StyledMealItem = styled.div`
+  background: ${(props) => props.theme.colors.offWhite};
+  box-shadow: ${(props) => props.theme.shadow.lightShadow};
+  border: 2px solid ${(props) => props.theme.colors.danger};
+  border-radius: 1rem;
+  padding: 1.5rem;
+  max-width: 25rem;
+
+  @media(max-width: 800px){
+    width: 100%;
+    margin: .5rem 0;
+  }
+
+
+`;
+
+
+export const StyledMealItemHeader = styled.div`
+  display: flex;
+  justify-content: space-between;
+  transition: ${(props) => props.theme.transition.mainTransition};
+  h4{
+    font-size: 1.5rem;
+    color: ${(props) => props.theme.colors.primary};
+    width: 80%;
+    align-self: center;
+    text-align: center;
+    display: none;
+    position: absolute;
+    left: 50%;
+    transform: translate(-50%, 0);
+  }
+  img{
+    width: 100%;
+    position: relative;
+    border-radius:.5rem;
+    display: block;
+    border: 2px solid ${(props) => props.theme.colors.primary};
+    transition: ${(props) => props.theme.transition.mainTransition};
+
+    }
+
+
+`;
+
+
+export const StyledMealItemBody = styled.div`
+  display: flex;
+  color: ${(props) => props.theme.colors.primary};
+  flex-direction: column;
+  position: relative;
+  padding: .2rem 0;
+  span{
+    font-size: 1.5rem;
+  }
+  #showDesc{
+    cursor: pointer;
+    position:absolute;
+    right: 0;
+  }
+  p{
+    padding: .6rem 0;
+    letter-spacing: .1rem;
+    line-height: 1.5rem;
+    font-size: 1rem;
+  }
+`;

@@ -3,7 +3,7 @@
 /* eslint-disable no-shadow */
 import * as React from 'react';
 
-import { StyledMeal } from './Styled.Meal';
+import { StyledMeal, MealGrid } from './Styled.Meal';
 import SearchBar from './SearchBar';
 import Title from '../styled/title/Title';
 import Categories from './category/Categories';
@@ -21,9 +21,11 @@ const MealComp: React.FC<P> = ({ loading, mealList }) => (
   <StyledMeal>
     <Title mainTitle="Meals DB APP" color="#D9CB9E" size="4rem" />
     <SearchBar mealList={mealList} />
-    {!loading && mealList !== null && mealList.map(
-      (meal) => <MealItem key={meal.idMeal} meal={meal} />,
-    ) }
+    <MealGrid>
+      {!loading && mealList !== null && mealList.map(
+        (meal) => <MealItem key={meal.idMeal} meal={meal} />,
+      ) }
+    </MealGrid>
     <Categories />
   </StyledMeal>
 );
