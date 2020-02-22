@@ -44,6 +44,11 @@ export const navData: INavData[] = [
   },
   {
     id: uuid(),
+    text: 'income-calc',
+    path: '/income-calc',
+  },
+  {
+    id: uuid(),
     text: 'contact',
     path: '/contact',
   },

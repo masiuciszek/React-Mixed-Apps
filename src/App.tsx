@@ -7,6 +7,7 @@ import ConverterPage from './pages/converterPage';
 import CardsPage from './pages/Cards';
 import JokesApp from './pages/Jokes';
 import Meal from './pages/Meal';
+import IncomeCalcPage from './pages/IncomeCalc';
 
 interface P {
 
@@ -20,6 +21,7 @@ const App: React.FC<P> = () => (
         <Route exact path="/cards" component={CardsPage} />
         <Route exact path="/jokes" component={JokesApp} />
         <Route exact path="/meals" component={Meal} />
+        <Route exact path="/income-calc" component={IncomeCalcPage} />
         <Route exact path="/converter" component={ConverterPage} />
       </Switch>
 
