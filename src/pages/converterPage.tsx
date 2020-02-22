@@ -5,11 +5,11 @@ interface P {
 
 }
 
-const StarWarsPage: React.FC<P> = () => (
+const ConverterPage: React.FC<P> = () => (
   <PageWrapper>
 
-    <h1> Star Wars </h1>
+    <h1> ConverterPage </h1>
 
   </PageWrapper>
 );
-export default StarWarsPage;
+export default ConverterPage;

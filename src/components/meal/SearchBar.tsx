@@ -3,9 +3,11 @@
 /* eslint-disable no-shadow */
 import * as React from 'react';
 import { connect } from 'react-redux';
-import { StyledSearchBar } from './Styled.Meal';
+import { Search } from 'styled-icons/feather/Search';
+import { StyledSearchBar, StyledIcon, StyledSearchWrapper } from './Styled.Meal';
 import { getMealByName, clearMeals } from '../../redux/meals/mealActions';
 import { IMeal } from '../../redux/meals/meal.types';
+import useToggle from '../../hooks/useToggle';
 
 interface P {
   getMealByName: Function;
@@ -15,6 +17,7 @@ interface P {
 
 const SearchBar: React.FC<P> = ({ getMealByName, clearMeals, mealList }) => {
   const [textValue, setTextValue] = React.useState('');
+  const [showSearchBar, toggleSearchBar] = useToggle(false);
   React.useEffect(() => {
     if (mealList === [] || mealList === null) {
       setTextValue('');
@@ -33,7 +36,17 @@ const SearchBar: React.FC<P> = ({ getMealByName, clearMeals, mealList }) => {
 
   return (
     <>
-      <StyledSearchBar onChange={handleSearchMealName} placeholder="meal" value={textValue} />
+      <StyledSearchWrapper>
+        <StyledIcon>
+          <Search size="35" color="#fff" onClick={toggleSearchBar} />
+        </StyledIcon>
+        {
+          showSearchBar && (
+            <StyledSearchBar onChange={handleSearchMealName} placeholder="meal" value={textValue} />
+          )
+
+        }
+      </StyledSearchWrapper>
     </>
   );
 };

@@ -34,8 +34,8 @@ export const navData: INavData[] = [
   },
   {
     id: uuid(),
-    text: 'starWars',
-    path: '/starwars',
+    text: 'converter',
+    path: '/converter',
   },
   {
     id: uuid(),
@@ -65,9 +65,9 @@ export const HomeData: IHomeData[] = [
   },
   {
     id: uuid(),
-    title: 'star wars',
-    text: 'Who doesn\'t love Star wars, it\'s the best',
-    path: '/starwars',
+    title: 'converter App',
+    text: 'Check the latest currency',
+    path: '/converter',
     backgroundUrl: 'https://images.unsplash.com/photo-1537420327992-d6e192287183?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=634&q=80',
   },
   {

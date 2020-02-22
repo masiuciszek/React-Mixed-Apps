@@ -1,3 +1,4 @@
+/* eslint-disable import/extensions */
 /* eslint-disable jsx-a11y/click-events-have-key-events */
 /* eslint-disable jsx-a11y/no-static-element-interactions */
 /* eslint-disable react/prop-types */
@@ -19,16 +20,17 @@ const MealItem: React.FC<P> = ({ meal }) => {
   return (
     <StyledMealItem>
       <StyledMealItemHeader>
+        <div className="overlay" />
         <img src={strMealThumb} alt={strMeal} />
+      </StyledMealItemHeader>
+
+      <StyledMealItemBody className="body">
+
         <h4>
           Meal:
           {' '}
           {strMeal}
         </h4>
-      </StyledMealItemHeader>
-
-      <StyledMealItemBody>
-
         <span>
           {strArea}
           {' '}
@@ -38,7 +40,10 @@ const MealItem: React.FC<P> = ({ meal }) => {
         </span>
         <span id="showDesc" onClick={toggleDesc}>⬇</span>
         {showDesc && (
-          <p>{strInstructions}</p>
+          <p>
+            {strInstructions.slice(0, 100)}
+            ...
+          </p>
         )}
       </StyledMealItemBody>
     </StyledMealItem>

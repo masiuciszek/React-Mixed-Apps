@@ -69,7 +69,7 @@ export const StyledNavListSmall = styled.ul`
   left: 50%;
   transform: translate(-50%, 0);
   top: 0;
-  background: rgba(0,0,0,0.4);
+  background: rgba(0,0,0,0.67);
   li{
     font-size: 3rem;
     padding: 3rem 0;

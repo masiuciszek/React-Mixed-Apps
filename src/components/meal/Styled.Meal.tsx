@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import { grow } from '../styled/animations';
 
 
 export const StyledMeal = styled.div`
@@ -8,14 +9,29 @@ export const StyledMeal = styled.div`
   justify-content: center;
   align-items:center;
   justify-content:center;
+  position: relative;
   section:nth-child(1){
     letter-spacing: .1rem;
     border-bottom: 2px solid ${(props) => props.theme.colors.white};
   }
 `;
 
+export const StyledSearchWrapper = styled.div`
+  display:flex;
+  width: 100%;
+  align-items:center;
+  justify-content:center;
+`;
+
+export const StyledIcon = styled.div`
+  cursor: pointer;
+  padding: 0 .6rem;
+  display: inline-block;
+`;
+
+
 export const StyledSearchBar = styled.input`
-  width: 20%;
+  width: 90%;
   margin: 4rem 0;
   padding: .3rem .7rem;
   border: 2px solid ${({ theme }) => theme.colors.primary};
@@ -25,6 +41,7 @@ export const StyledSearchBar = styled.input`
   font-size: 1.3rem;
   letter-spacing: .1rem;
   text-transform: capitalize;
+  animation: ${grow} 500ms ease-in-out;
   &:active{
     background: ${({ theme }) => theme.colors.danger};
   }
@@ -33,70 +50,60 @@ export const StyledSearchBar = styled.input`
     box-shadow: ${({ theme }) => theme.shadow.darkShadow};
     color: ${({ theme }) => theme.colors.white};
     border: 3px solid ${({ theme }) => theme.colors.primary};
-    width: 70%;
+    width: 94%;
   }
+
+
 `;
 
 export const MealGrid = styled.section`
-  display: flex;
+   display: flex;
   flex-wrap: wrap;
   justify-content: center;
   align-items: center;
-
-@media(min-width: 800px){
-
-  display: grid;
-  grid-template-columns: repeat(2, minmax(200px, 1fr));
-  grid-gap: 10px;
-}
+  margin-bottom: 1.5rem;
   @media(min-width: 1100px){
-  /* grid-template-columns: repeat(auto-fit, minmax(400px, 2fr)); */
-  display: grid;
-  grid-template-columns: repeat(3, minmax(300px, 1fr));
-  grid-gap: 10px;
+    display: grid;
+    padding: .5rem;
+    width: 100%;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    grid-gap: 20px;
   }
+
 `;
 
 export const StyledMealItem = styled.div`
+  position: relative;
   background: ${(props) => props.theme.colors.offWhite};
   box-shadow: ${(props) => props.theme.shadow.lightShadow};
-  border: 2px solid ${(props) => props.theme.colors.danger};
+  border: 3px solid ${(props) => props.theme.colors.primary};
   border-radius: 1rem;
-  padding: 1.5rem;
+  padding: .3rem;
   max-width: 25rem;
-
-  @media(max-width: 800px){
+  @media(max-width: 1100px){
     width: 100%;
     margin: .5rem 0;
   }
-
+  transition: ${(props) => props.theme.transition.mainTransition};
 
 `;
 
 
 export const StyledMealItemHeader = styled.div`
-  display: flex;
-  justify-content: space-between;
-  transition: ${(props) => props.theme.transition.mainTransition};
-  h4{
-    font-size: 1.5rem;
-    color: ${(props) => props.theme.colors.primary};
-    width: 80%;
-    align-self: center;
-    text-align: center;
-    display: none;
-    position: absolute;
-    left: 50%;
-    transform: translate(-50%, 0);
-  }
-  img{
-    width: 100%;
-    position: relative;
-    border-radius:.5rem;
-    display: block;
-    border: 2px solid ${(props) => props.theme.colors.primary};
-    transition: ${(props) => props.theme.transition.mainTransition};
+    .overlay{
+        background:${(props) => props.theme.colors.darkRGBA};
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        border-radius: 1rem;
+    }
 
+    img{
+      width: 100%;
+      display: block;
+      border-radius: 1rem;
     }
 
 
@@ -104,13 +111,27 @@ export const StyledMealItemHeader = styled.div`
 
 
 export const StyledMealItemBody = styled.div`
+  /* display: none; */
+  /* position: relative;
+  left: 50%;
+  top: -30%;
+  transform: translate(-50%, 0); */
+  z-index: 2;
+  position: relative;
+  transition: ${(props) => props.theme.transition.mainTransition};
+  h4{
+    letter-spacing: .1rem;
+    font-size: 1.5rem;
+    padding: 1rem 0;
+    }
+
   display: flex;
-  color: ${(props) => props.theme.colors.primary};
+  color: ${(props) => props.theme.colors.white};
   flex-direction: column;
   position: relative;
   padding: .2rem 0;
   span{
-    font-size: 1.5rem;
+    font-size: 1.1rem;
   }
   #showDesc{
     cursor: pointer;

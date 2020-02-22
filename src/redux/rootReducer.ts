@@ -1,8 +1,7 @@
 /* eslint-disable @typescript-eslint/interface-name-prefix */
-import { persistStore, persistReducer, WebStorage } from 'redux-persist';
+import { persistReducer, WebStorage } from 'redux-persist';
 import storage from 'redux-persist/lib/storage';
 import { combineReducers } from 'redux';
-import starWarsReducer from './starwars/sw.reducer';
 import cardReducer from './cardDeck/card.reducer';
 import jokesReducer from './jokes/jokes.reducer';
 import mealReducer from './meals/meal.reducer';
@@ -23,7 +22,7 @@ const persistConfig: IPersistConfig = {
 
 
 const rootReducer = combineReducers({
-  starWars: starWarsReducer,
+  fixerApp: () => 'fixer',
   cards: cardReducer,
   jokes: jokesReducer,
   meals: mealReducer,
