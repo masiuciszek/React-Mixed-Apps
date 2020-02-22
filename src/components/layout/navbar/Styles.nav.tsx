@@ -51,13 +51,13 @@ export const StyledNavList = styled.ul`
       }
     }
   }
-  @media(min-width: 940px){
+  @media(min-width: 1140px){
     display: flex;
   }
 `;
 
 export const StyledNavListSmall = styled.ul`
-   @media(min-width: 940px){
+   @media(min-width: 1140px){
     display: none;
   }
   text-align:center;
@@ -97,7 +97,7 @@ export const MenuIcon = styled.span`
   svg{
     color: ${({ theme }) => theme.colors.white};
   }
-  @media(min-width: 940px){
+  @media(min-width: 1140px){
     display: none;
   }
 `;

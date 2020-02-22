@@ -14,6 +14,7 @@ const IncomeExpense: React.FC<P> = () => {
         <h4>Income</h4>
         <span id="income">500$</span>
       </div>
+
       <div className="box">
         <h4>Expense</h4>
         <span id="expense">240$</span>

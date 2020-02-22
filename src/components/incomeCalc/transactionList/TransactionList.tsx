@@ -17,7 +17,7 @@ const TransactionList: React.FC<P> = () => {
   const [transactions, setTransactions] = React.useState<ITransaction[]>([
     {
       id: uuid(),
-      title: 'Thailand Trip',
+      title: 'Vacation',
       amount: -300,
     },
     {

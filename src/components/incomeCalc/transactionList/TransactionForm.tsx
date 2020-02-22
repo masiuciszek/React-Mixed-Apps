@@ -7,11 +7,11 @@ interface P {
 const TransactionForm: React.FC<P> = () => {
   let a;
   return (
-    <div>
+    <>
       {' '}
-      <h1> Legia CWSKS </h1>
+      <h1> Form goes here </h1>
       {' '}
-    </div>
+    </>
   );
 };
 export default TransactionForm;

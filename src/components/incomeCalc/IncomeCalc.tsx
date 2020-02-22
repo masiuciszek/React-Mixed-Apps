@@ -15,7 +15,7 @@ const IncomeCalc: React.FC<P> = () => (
   <>
 
     <StyledIncomeCalc>
-      <Title mainTitle="Income Calculator" color="#333" />
+      <Title mainTitle="Income Calculator" color="#333" size="2rem" />
       <Balance />
       <IncomeExpense />
       <TransactionList />
