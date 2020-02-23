@@ -1,45 +1,37 @@
+/* eslint-disable react/prop-types */
+/* eslint-disable no-shadow */
+/* eslint-disable import/no-cycle */
+/* eslint-disable import/extensions */
 import * as React from 'react';
-import uuid from 'uuid/v4';
+import { connect } from 'react-redux';
+import { getTransactionsSelect } from '../../../redux/incomeCalc/income.select';
 import { StyleTransactionList } from '../Styles.income';
 import TransactionItem from './TransactionItem';
+import { ITransactionItem } from '../../../utils/incomeData';
+import { AppState } from '../../../redux';
+import { getTransactions } from '../../../redux/incomeCalc/income.actions';
 
 interface P {
-
+  transactions: ITransactionItem[];
+  getTransactions: Function;
 }
 
-export interface ITransaction {
-  id: string;
-  title: string;
-  amount: number;
-}
 
-const TransactionList: React.FC<P> = () => {
-  const [transactions, setTransactions] = React.useState<ITransaction[]>([
-    {
-      id: uuid(),
-      title: 'Vacation',
-      amount: -300,
-    },
-    {
-      id: uuid(),
-      title: 'income',
-      amount: +1200,
-    },
-    {
-      id: uuid(),
-      title: 'Lunch',
-      amount: -5,
-    },
-    {
-      id: uuid(),
-      title: 'book',
-      amount: -5,
-    },
-  ]);
+const TransactionList: React.FC<P> = ({ transactions, getTransactions }) => {
+  React.useEffect(() => {
+    getTransactions();
+  }, []);
+
   return (
     <StyleTransactionList>
       {transactions.map((x) => <TransactionItem key={x.id} data={x} />)}
     </StyleTransactionList>
   );
 };
-export default TransactionList;
+
+
+const mapStateToProps = (state: AppState) => ({
+  transactions: getTransactionsSelect(state),
+});
+
+export default connect(mapStateToProps, { getTransactions })(TransactionList);

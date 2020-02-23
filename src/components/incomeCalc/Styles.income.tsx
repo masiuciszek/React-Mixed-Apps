@@ -43,6 +43,7 @@ export const StyleTransactionItem = styled.section<ITransactionItem>`
   h4{
     font-size: 1.5rem;
     font-weight: 300;
+    cursor: pointer; /**TODO: Fire modal */
     .label{
       display: inline-block;
       width: .2rem;
@@ -117,4 +118,13 @@ export const StyledIncomeExpense = styled.div`
     top: 1.5rem;
   }
   }
+`;
+
+
+export const StyledTransactionForm = styled.form`
+
+`;
+
+export const StyledInput = styled.input`
+
 `;

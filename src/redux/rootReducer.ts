@@ -5,7 +5,7 @@ import { combineReducers } from 'redux';
 import cardReducer from './cardDeck/card.reducer';
 import jokesReducer from './jokes/jokes.reducer';
 import mealReducer from './meals/meal.reducer';
-
+import incomeReducer from './incomeCalc/income.reducer';
 
 interface IPersistConfig {
   key: string;
@@ -17,12 +17,12 @@ interface IPersistConfig {
 const persistConfig: IPersistConfig = {
   key: 'root',
   storage,
-  whitelist: ['jokes'],
+  whitelist: ['incomes'],
 };
 
 
 const rootReducer = combineReducers({
-  fixerApp: () => 'fixer',
+  incomes: incomeReducer,
   cards: cardReducer,
   jokes: jokesReducer,
   meals: mealReducer,
