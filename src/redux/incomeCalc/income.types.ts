@@ -7,7 +7,7 @@ interface ITransaction {
 }
 
 export interface IStateIncome{
-  balance: number;
+
   transactions: ITransaction[];
 }
 
@@ -31,7 +31,7 @@ export interface AddTransactionsAction {
 
 export interface UpdateTransactionsAction {
   type: ActionTypesIncome.UPDATE_TRANSACTION;
-  payload: string; // id
+  payload: ITransaction;
 }
 
 export interface RemoveTransactionsAction {

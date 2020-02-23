@@ -1,7 +1,6 @@
 import { IStateIncome, ActionTypesIncome, IncomeActionTypes } from './income.types';
 
 const initialState: IStateIncome = {
-  balance: 0,
   transactions: [],
 };
 
@@ -21,7 +20,10 @@ export default (state: IStateIncome = initialState, action: IncomeActionTypes) =
     case ActionTypesIncome.UPDATE_TRANSACTION:
       return {
         ...state,
-        transactions: state.transactions.map((item) => (item.id === action.payload ? { ...item } : item)),
+        transactions: state.transactions.map(
+          (item) => (item.id === action.payload.id
+            ? { ...item, title: action.payload.title, amount: action.payload.amount } : item),
+        ),
       };
     case ActionTypesIncome.DELETE_TRANSACTION:
       return {

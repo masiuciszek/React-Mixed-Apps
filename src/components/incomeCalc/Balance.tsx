@@ -3,7 +3,7 @@ import * as React from 'react';
 import { connect } from 'react-redux';
 import { StyledBalance } from './Styles.income';
 import { AppState } from '../../redux';
-import { selectBalance } from '../../redux/incomeCalc/income.select';
+import { selectCalculateBalance } from '../../redux/incomeCalc/income.select';
 
 interface P {
   currentBalance: number;
@@ -21,6 +21,7 @@ const Balance: React.FC<P> = ({ currentBalance }) => (
 );
 
 const mapStateToProps = (state: AppState) => ({
-  currentBalance: selectBalance(state),
+  currentBalance: selectCalculateBalance(state),
+
 });
 export default connect(mapStateToProps)(Balance);

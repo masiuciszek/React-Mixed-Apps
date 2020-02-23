@@ -160,6 +160,7 @@ export const StyledInput = styled.input`
   ${GenericStyle}
   transition: ${({ theme }) => theme.transition.mainTransition};
   margin: .2rem 0;
+  font-size: 1.2rem;
   &:focus{
     box-shadow: ${(props) => props.theme.shadow.darkShadow};
     border: 2px solid ${(props) => props.theme.colors.primary};

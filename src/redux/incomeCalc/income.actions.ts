@@ -1,5 +1,5 @@
 import {
-  GetTransactionsAction, ActionTypesIncome, AddTransactionsAction, RemoveTransactionsAction,
+  GetTransactionsAction, ActionTypesIncome, AddTransactionsAction, RemoveTransactionsAction, UpdateTransactionsAction,
 } from './income.types';
 import incomeData, { ITransactionItem } from '../../utils/incomeData';
 
@@ -17,4 +17,9 @@ export const addTransaction = (formData: ITransactionItem): AddTransactionsActio
 export const deleteTransaction = (id: string): RemoveTransactionsAction => ({
   type: ActionTypesIncome.DELETE_TRANSACTION,
   payload: id,
+});
+
+export const editTransaction = (formData: ITransactionItem): UpdateTransactionsAction => ({
+  type: ActionTypesIncome.UPDATE_TRANSACTION,
+  payload: formData,
 });
