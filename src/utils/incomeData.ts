@@ -26,7 +26,7 @@ const incomeData: ITransactionItem[] = [
   {
     id: uuid(),
     title: 'book',
-    amount: -5,
+    amount: -8,
   },
 ];
 

@@ -13,7 +13,7 @@ export const addTransaction = (formData: ITransactionItem): AddTransactionsActio
   type: ActionTypesIncome.ADD_TRANSACTION,
   payload: formData,
 });
-
+//
 export const deleteTransaction = (id: string): RemoveTransactionsAction => ({
   type: ActionTypesIncome.DELETE_TRANSACTION,
   payload: id,

@@ -20,3 +20,19 @@ export const selectBalance = createSelector(
   [selectIncomes],
   (incomeState: IStateIncome) => incomeState.balance,
 );
+
+
+export const selectCalculateExpense = createSelector(
+  [selectIncomes],
+  (incomeState: IStateIncome) => incomeState.transactions.map(
+    (x) => (x.amount < 0 ? x.amount : 0),
+  ).reduce((acc, exp) => acc + exp, 0),
+);
+
+
+export const selectCalculateIncome = createSelector(
+  [selectIncomes],
+  (incomeState: IStateIncome) => incomeState.transactions.map(
+    (x) => (x.amount > 0 ? x.amount : 0),
+  ).reduce((acc, income) => acc + income, 0),
+);

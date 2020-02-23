@@ -9,12 +9,14 @@ import JokesApp from './pages/Jokes';
 import Meal from './pages/Meal';
 import IncomeCalcPage from './pages/IncomeCalc';
 
+
 interface P {
 
 }
 
 const App: React.FC<P> = () => (
   <>
+
     <Layout>
       <Switch>
         <Route exact path="/" component={HomePage} />

@@ -8,8 +8,6 @@ interface ITransaction {
 
 export interface IStateIncome{
   balance: number;
-  income: number; // TODO: Check to se if this is needed
-  expense: number; // TODO: Check to se if this is needed
   transactions: ITransaction[];
 }
 

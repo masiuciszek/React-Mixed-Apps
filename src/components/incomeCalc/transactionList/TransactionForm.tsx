@@ -1,11 +1,14 @@
+/* eslint-disable import/extensions */
 /* eslint-disable @typescript-eslint/interface-name-prefix */
 import * as React from 'react';
+import { connect } from 'react-redux';
+import uuid from 'uuid/v4';
 import { StyledTransactionForm, StyledInput } from '../Styles.income';
 import { StyledBtn } from '../../styled/Buttons';
-
+import { addTransaction } from '../../../redux/incomeCalc/income.actions';
 
 interface P {
-
+  addTransaction: Function;
 }
 
 interface IFormData {
@@ -13,7 +16,7 @@ interface IFormData {
   amount: number;
 }
 
-const TransactionForm: React.FC<P> = () => {
+const TransactionForm: React.FC<P> = ({ addTransaction }) => {
   const [formData, setFormData] = React.useState<IFormData>({
     title: '',
     amount: 0,
@@ -28,7 +31,11 @@ const TransactionForm: React.FC<P> = () => {
 
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    console.log(formData);
+    addTransaction({
+      id: uuid(),
+      title,
+      amount: Number(amount),
+    });
     setFormData({
       title: '',
       amount: 0,
@@ -52,4 +59,6 @@ const TransactionForm: React.FC<P> = () => {
     </StyledTransactionForm>
   );
 };
-export default TransactionForm;
+
+
+export default connect(null, { addTransaction })(TransactionForm);
