@@ -32,3 +32,8 @@ export const StyledBtn = styled(StyledLink)<IBtn>`
   background: ${({ theme }) => theme.colors.green};
   font-family: ${({ theme, font }) => font && "'Faster One'"}
 `;
+
+
+export const FormBtn = styled.button`
+
+`;

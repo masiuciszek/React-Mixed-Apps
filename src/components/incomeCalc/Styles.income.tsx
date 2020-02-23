@@ -1,5 +1,6 @@
 /* eslint-disable @typescript-eslint/interface-name-prefix */
 import styled, { css } from 'styled-components';
+import theme from '../styled/theme';
 
 interface ITransactionItem {
   amount?: number;
@@ -23,7 +24,7 @@ export const StyledBalance = styled.section`
 
 export const StyledIncomeCalc = styled.div`
   margin: 3rem 0;
-  border : 2px solid blue;
+
   ${GenericStyle};
 `;
 
@@ -40,6 +41,7 @@ export const StyleTransactionItem = styled.section<ITransactionItem>`
   justify-content: space-between;
   margin: 1rem 0;
   border-radius: .3rem;
+  transition: ${(props) => props.theme.transition.quickTransition};
   h4{
     font-size: 1.5rem;
     font-weight: 300;
@@ -52,6 +54,10 @@ export const StyleTransactionItem = styled.section<ITransactionItem>`
       background: ${({ theme, amount }) => (amount && amount > 0 ? theme.colors.green : theme.colors.danger)};
     }
   }
+  &:hover{
+    box-shadow: ${(props) => props.theme.shadow.darkShadow};
+    transform: scale(1.03);
+  }
 `;
 
 export const StyledIncomeExpense = styled.div`
@@ -62,6 +68,7 @@ export const StyledIncomeExpense = styled.div`
   box-shadow: ${(props) => props.theme.shadow.lightShadow};
   position: relative;
   ${GenericStyle};
+  border: 2px solid ${(props) => props.theme.colors.primary};
   @media(max-width: 580px){
     flex-direction: column;
   }
@@ -122,9 +129,40 @@ export const StyledIncomeExpense = styled.div`
 
 
 export const StyledTransactionForm = styled.form`
-
+  width: 80%;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  justify-content:center;
+  align-items:center;
+  ${GenericStyle}
+  label{
+    font-size:1.2rem;
+    letter-spacing: .1rem;
+    display:flex;
+    flex-direction:column;
+    margin: 1rem 0;
+    text-transform: capitalize;
+  }
+  button{
+    background: ${(props) => props.theme.colors.primary};
+    color: ${(props) => props.theme.colors.white};
+    border: 1px solid ${(props) => props.theme.colors.offWhite};
+    padding: .2rem .4rem;
+    font-size: 1rem;
+  }
 `;
 
 export const StyledInput = styled.input`
-
+  width: 24rem;
+  border: 1px solid ${(props) => props.theme.colors.primary};
+  box-shadow: ${(props) => props.theme.shadow.lightShadow};
+  ${GenericStyle}
+  transition: ${({ theme }) => theme.transition.mainTransition};
+  margin: .2rem 0;
+  &:focus{
+    box-shadow: ${(props) => props.theme.shadow.darkShadow};
+    border: 2px solid ${(props) => props.theme.colors.primary};
+    width: 26rem;
+  }
 `;
