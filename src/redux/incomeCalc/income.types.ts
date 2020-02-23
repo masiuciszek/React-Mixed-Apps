@@ -7,8 +7,8 @@ interface ITransaction {
 }
 
 export interface IStateIncome{
-
   transactions: ITransaction[];
+  current: null | ITransaction;
 }
 
 export enum ActionTypesIncome {
@@ -16,7 +16,8 @@ export enum ActionTypesIncome {
   ADD_TRANSACTION = 'ADD_TRANSACTION',
   UPDATE_TRANSACTION = 'UPDATE_TRANSACTION',
   DELETE_TRANSACTION = 'DELETE_TRANSACTION',
-  FIRE_MODAL = 'FIRE_MODAL',
+  SET_CURRENT = 'SET_CURRENT',
+  CLEAR_CURRENT = 'CLEAR_CURRENT',
 }
 
 export interface GetTransactionsAction {
@@ -38,8 +39,12 @@ export interface RemoveTransactionsAction {
   type: ActionTypesIncome.DELETE_TRANSACTION;
   payload: string; // id
 }
-export interface FireModalAction {
-  type: ActionTypesIncome.FIRE_MODAL;
+export interface SetCurrentAction {
+  type: ActionTypesIncome.SET_CURRENT;
+  payload: ITransaction;
+}
+export interface ClearCurrentAction {
+  type: ActionTypesIncome.CLEAR_CURRENT;
 }
 
 
@@ -48,4 +53,5 @@ export type IncomeActionTypes =
   | AddTransactionsAction
   | UpdateTransactionsAction
   | RemoveTransactionsAction
-  | FireModalAction
+  | SetCurrentAction
+  | ClearCurrentAction

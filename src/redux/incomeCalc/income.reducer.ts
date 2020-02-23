@@ -2,6 +2,7 @@ import { IStateIncome, ActionTypesIncome, IncomeActionTypes } from './income.typ
 
 const initialState: IStateIncome = {
   transactions: [],
+  current: null,
 };
 
 
@@ -17,12 +18,21 @@ export default (state: IStateIncome = initialState, action: IncomeActionTypes) =
         ...state,
         transactions: [...state.transactions, action.payload],
       };
+    case ActionTypesIncome.SET_CURRENT:
+      return {
+        ...state,
+        current: action.payload,
+      };
+    case ActionTypesIncome.CLEAR_CURRENT:
+      return {
+        ...state,
+        current: null,
+      };
     case ActionTypesIncome.UPDATE_TRANSACTION:
       return {
         ...state,
         transactions: state.transactions.map(
-          (item) => (item.id === action.payload.id
-            ? { ...item, title: action.payload.title, amount: action.payload.amount } : item),
+          (x) => (x.id === state.current?.id ? action.payload : x),
         ),
       };
     case ActionTypesIncome.DELETE_TRANSACTION:

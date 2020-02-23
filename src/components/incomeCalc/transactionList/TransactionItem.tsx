@@ -22,13 +22,6 @@ const TransactionItem: React.FC<P> = ({ data, deleteTransaction }) => {
   const { id, title, amount } = data;
   const [showOptions, toggleOptions] = useToggle(false);
 
-  const handleDelete = () => {
-    const answer = prompt('are you sure you want to delete? Enter yes or no ! ');
-    if (answer === 'yes') {
-      deleteTransaction(id);
-    }
-  };
-
 
   let content;
   if (showOptions) {
@@ -40,6 +33,7 @@ const TransactionItem: React.FC<P> = ({ data, deleteTransaction }) => {
         btnShow
         deleteTransaction={deleteTransaction}
         id={id}
+        data={data}
       />
     );
   }

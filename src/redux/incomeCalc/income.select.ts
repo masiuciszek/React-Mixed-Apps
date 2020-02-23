@@ -17,6 +17,12 @@ export const addTransactionSelect = createSelector(
 );
 
 
+export const selectCurrentTransaction = createSelector(
+  [selectIncomes],
+  (incomeState: IStateIncome) => incomeState.current,
+);
+
+
 export const selectCalculateBalance = createSelector(
   [selectIncomes],
   (incomeState: IStateIncome) => incomeState.transactions.reduce((acc, cur) => acc + cur.amount, 0),

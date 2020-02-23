@@ -1,5 +1,11 @@
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 
+const FlexStyle = css`
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items:center;
+`;
 
 export const StyledModalContainer = styled.div`
   position:fixed;
@@ -9,7 +15,6 @@ export const StyledModalContainer = styled.div`
   z-index: 1050;
   display: flex;
   align-items:baseline;
-
 `;
 export const ModalBg = styled.div`
   width: 100vw;
@@ -29,9 +34,9 @@ export const ModalBoxSetup = styled.div`
   box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.04);
   background: #fff;
   /* border: 0.5px solid #e8e8e8; */
-  border: 2px solid #333;
+  border: 2px solid ${(props) => props.theme.colors.primary};
   height: 31rem;
-
+  border-radius: 1rem;
   @media(max-width: 654px){
     width: 82%;
   }
@@ -94,5 +99,29 @@ h3 {
    .card-head{
      margin-top: 2rem;
    }
+  }
+`;
+
+
+export const StyledCardForm = styled.form`
+  ${FlexStyle}
+  padding: .5rem;
+  height: 22rem;
+  label{
+    ${FlexStyle}
+    font-size:1rem;
+    text-align:left;
+    span{
+      margin-right: auto;
+      font-size: 1.2rem;
+      padding: .4rem 0;
+    }
+  }
+  button{
+    padding: .2rem .5rem;
+    font-size: 1.1rem;
+    margin-top: 1.5rem;
+    background: ${(props) => props.theme.colors.primary};
+    color: ${(props) => props.theme.colors.white};
   }
 `;
