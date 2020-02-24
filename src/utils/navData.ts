@@ -34,11 +34,6 @@ export const navData: INavData[] = [
   },
   {
     id: uuid(),
-    text: 'converter',
-    path: '/converter',
-  },
-  {
-    id: uuid(),
     text: 'meals',
     path: '/meals',
   },
@@ -70,9 +65,9 @@ export const HomeData: IHomeData[] = [
   },
   {
     id: uuid(),
-    title: 'converter App',
-    text: 'Check the latest currency',
-    path: '/converter',
+    title: 'income-calc App',
+    text: 'check you income vs expense',
+    path: '/income-calc',
     backgroundUrl: 'https://images.unsplash.com/photo-1537420327992-d6e192287183?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=634&q=80',
   },
   {

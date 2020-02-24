@@ -1,15 +1,14 @@
 import * as React from 'react';
 import { PageWrapper } from '../components/styled/Wrappers';
+import Contact from '../components/contact/Contact';
 
 interface P {
 
 }
 
-const ConverterPage: React.FC<P> = () => (
+const ContactPage: React.FC<P> = () => (
   <PageWrapper>
-
-    <h1> ConverterPage </h1>
-
+    <Contact />
   </PageWrapper>
 );
-export default ConverterPage;
+export default ContactPage;

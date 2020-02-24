@@ -3,11 +3,11 @@ import React from 'react';
 import { Route, Switch } from 'react-router-dom';
 import Layout from './components/layout/Layout';
 import HomePage from './pages/HomePage';
-import ConverterPage from './pages/converterPage';
 import CardsPage from './pages/Cards';
 import JokesApp from './pages/Jokes';
 import Meal from './pages/Meal';
 import IncomeCalcPage from './pages/IncomeCalc';
+import ContactPage from './pages/Contact';
 
 
 interface P {
@@ -24,7 +24,7 @@ const App: React.FC<P> = () => (
         <Route exact path="/jokes" component={JokesApp} />
         <Route exact path="/meals" component={Meal} />
         <Route exact path="/income-calc" component={IncomeCalcPage} />
-        <Route exact path="/converter" component={ConverterPage} />
+        <Route exact path="/contact" component={ContactPage} />
       </Switch>
 
     </Layout>
