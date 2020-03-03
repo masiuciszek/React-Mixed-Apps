@@ -7,19 +7,6 @@ import jokesReducer from './jokes/jokes.reducer';
 import mealReducer from './meals/meal.reducer';
 import incomeReducer from './incomeCalc/income.reducer';
 
-interface IPersistConfig {
-  key: string;
-  storage: WebStorage;
-  whitelist: string[];
-}
-
-
-const persistConfig: IPersistConfig = {
-  key: 'root',
-  storage,
-  whitelist: ['incomes'],
-};
-
 
 const rootReducer = combineReducers({
   incomes: incomeReducer,
@@ -29,4 +16,4 @@ const rootReducer = combineReducers({
 });
 
 
-export default persistReducer(persistConfig, rootReducer);
+export default rootReducer;

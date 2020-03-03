@@ -1,6 +1,5 @@
 /* eslint-disable import/extensions */
 import * as React from 'react';
-import { MenuAltRight } from 'styled-icons/boxicons-regular/MenuAltRight';
 import {
   StyledNav, StyledNavTitle, StyledNavList, MenuIcon,
 } from './Styles.nav';
@@ -18,7 +17,7 @@ const NavBar: React.FC<P> = () => {
     <>
       <StyledNav>
         <MenuIcon onClick={toggleFn}>
-          <MenuAltRight size="37" />
+          <span>Hamburger</span>
         </MenuIcon>
         <StyledNavTitle>
           <h4>

@@ -5,7 +5,7 @@ import {
 import { createLogger } from 'redux-logger';
 import { composeWithDevTools } from 'redux-devtools-extension';
 import thunk from 'redux-thunk';
-import { persistStore } from 'redux-persist';
+
 import rootReducer from './rootReducer';
 
 const logger = createLogger();
@@ -34,20 +34,3 @@ export const configureStore = () => {
   );
   return store;
 };
-
-
-export const store: any = configureStore();
-
-export const persistor = persistStore(store);
-
-// const middleware = [];
-
-
-// const middleWareEnhancer = applyMiddleware(...middleware);
-
-// export const store: any = createStore(
-//   rootReducer,
-//   composeWithDevTools(middleWareEnhancer),
-// );
-
-// export const persistor = persistStore(store);

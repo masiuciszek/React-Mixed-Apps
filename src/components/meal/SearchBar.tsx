@@ -3,7 +3,6 @@
 /* eslint-disable no-shadow */
 import * as React from 'react';
 import { connect } from 'react-redux';
-import { Search } from 'styled-icons/feather/Search';
 import { StyledSearchBar, StyledIcon, StyledSearchWrapper } from './Styled.Meal';
 import { getMealByName, clearMeals } from '../../redux/meals/mealActions';
 import { IMeal } from '../../redux/meals/meal.types';
@@ -38,7 +37,7 @@ const SearchBar: React.FC<P> = ({ getMealByName, clearMeals, mealList }) => {
     <>
       <StyledSearchWrapper>
         <StyledIcon>
-          <Search size="35" color="#fff" onClick={toggleSearchBar} />
+          <span onClick={toggleSearchBar}>Search</span>
         </StyledIcon>
         {
           showSearchBar && (
